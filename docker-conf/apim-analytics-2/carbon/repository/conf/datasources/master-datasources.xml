@@ -35,10 +35,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/userdb?autoReconnect=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
+                    <username>userdb</username>
+                    <password>Passw0rd</password>
+                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -56,10 +56,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/govregdb?autoReconnect=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
+                    <username>govregdb</username>
+                    <password>Passw0rd</password>
+                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>

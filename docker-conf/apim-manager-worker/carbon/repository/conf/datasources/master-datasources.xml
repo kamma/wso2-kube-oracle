@@ -35,11 +35,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/apimgtdb?autoReconnect=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <defaultAutoCommit>false</defaultAutoCommit>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
+                    <username>apimgtdb</username>
+                    <password>Passw0rd</password>
+                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -57,10 +56,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/userdb?autoReconnect=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
+                    <username>userdb</username>
+                    <password>Passw0rd</password>
+                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -78,10 +77,10 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/govregdb?autoReconnect=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
+                    <username>govregdb</username>
+                    <password>Passw0rd</password>
+                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -99,16 +98,15 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:mysql://apim-rdbms:3306/statdb?autoReconnect=true&amp;relaxAutoCommit=true</url>
-                    <username>root</username>
-                    <password>root</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
+                    <username>statdb</username>
+                    <password>Passw0rd</password>
+                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
-                    <defaultAutoCommit>false</defaultAutoCommit>
                 </configuration>
             </definition>
         </datasource>
@@ -134,41 +132,6 @@
                 </configuration>
             </definition>
         </datasource>
-
-        <!-- For an explanation of the properties, see: http://people.apache.org/~fhanik/jdbc-pool/jdbc-pool.html -->
-        <!--datasource>
-            <name>SAMPLE_DATA_SOURCE</name>
-            <jndiConfig>
-                <name></name>
-                <properties>
-                    <property name="java.naming.factory.initial"></property>
-                    <property name="java.naming.provider.url"></property>
-                </properties>
-            </jndiConfig>
-            <definition type="RDBMS">
-                <configuration>
-
-                    <defaultAutoCommit></defaultAutoCommit>
-                    <defaultReadOnly></defaultReadOnly>
-                    <defaultTransactionIsolation>NONE|READ_COMMITTED|READ_UNCOMMITTED|REPEATABLE_READ|SERIALIZABLE</defaultTransactionIsolation>
-                    <defaultCatalog></defaultCatalog>
-                    <username></username>
-                    <password svns:secretAlias="WSO2.DB.Password"></password>
-                    <maxActive></maxActive>
-                    <maxIdle></maxIdle>
-                    <initialSize></initialSize>
-                    <maxWait></maxWait>
-
-                    <dataSourceClassName>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</dataSourceClassName>
-                    <dataSourceProps>
-                        <property name="url">jdbc:mysql://localhost:3306/Test1</property>
-                        <property name="user">root</property>
-                        <property name="password">123</property>
-                    </dataSourceProps>
-
-                </configuration>
-            </definition>
-        </datasource-->
 
     </datasources>
 
