@@ -1,5 +1,4 @@
 drop user apimgtdb cascade;
-drop user configdb cascade;
 drop user govregdb cascade;
 drop user userdb cascade;
 drop user mbstoredb cascade;
@@ -12,11 +11,6 @@ create user apimgtdb identified by Passw0rd account unlock DEFAULT TABLESPACE "U
 grant connect to apimgtdb;
 grant create session, create table, create sequence, create trigger to apimgtdb;
 alter user apimgtdb quota UNLIMITED on USERS;
-/************************************* configdb *********************************/
-create user configdb identified by Passw0rd account unlock DEFAULT TABLESPACE "USERS" TEMPORARY TABLESPACE "TEMP";
-grant connect to configdb;
-grant create session, create table, create sequence, create trigger to configdb;
-alter user configdb quota UNLIMITED on USERS;
 /************************************* govregdb *********************************/
 create user govregdb identified by Passw0rd account unlock DEFAULT TABLESPACE "USERS" TEMPORARY TABLESPACE "TEMP";
 grant connect to govregdb;
