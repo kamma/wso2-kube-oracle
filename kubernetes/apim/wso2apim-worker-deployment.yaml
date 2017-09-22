@@ -71,7 +71,7 @@ spec:
         volumeMounts:
         -
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
-          name: apim-worker-storage-volume
+          name: apim-mgt-storage-volume
 
       -
         image: 10.201.152.1:5000/rsync:1.0.0
@@ -84,5 +84,9 @@ spec:
         volumeMounts:
         -
           mountPath: "/home/wso2user/apim-artifacts"
-          name: apim-worker-storage-volume
+          name: apim-mgt-storage-volume
       serviceAccountName: "wso2svcacct"
+      volumes:
+      - name: apim-mgt-storage-volume
+        persistentVolumeClaim:
+          claimName: apim-mgt-volume-claim
