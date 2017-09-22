@@ -34,4 +34,4 @@ if [[ ! -z ${local_docker_ip} ]]; then
 fi
 
 # Start the carbon server.
-${HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/bin/wso2server.sh
+${HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/bin/wso2server.sh -Dsetup
