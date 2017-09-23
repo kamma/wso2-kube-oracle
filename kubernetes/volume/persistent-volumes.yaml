@@ -28,4 +28,4 @@ spec:
   nfs:
     # FIXME: use the right IP
     server: 10.201.152.1
-    path: "/exports/pattern-1/apim"
+    path: "/home/kamma/nfs"

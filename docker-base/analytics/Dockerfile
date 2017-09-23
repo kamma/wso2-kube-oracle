@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:16.04
 MAINTAINER WSO2 Docker Maintainers "dev@wso2.org"
 ENV DEBIAN_FRONTEND noninteractive
 

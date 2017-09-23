@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:16.04
 MAINTAINER WSO2 Docker Maintainers "dev@wso2.org"
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -16,7 +16,7 @@ ARG STARTUP_SCRIPT=init_carbon.sh
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
-       	   zip \
+	   zip \
            unzip \
            telnet \
            iproute2 \

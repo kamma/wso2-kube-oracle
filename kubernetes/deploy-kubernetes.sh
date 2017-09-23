@@ -12,7 +12,6 @@ kubectl apply -f apim-analytics/wso2apim-analytics-1-service.yaml
 kubectl apply -f apim-analytics/wso2apim-analytics-2-service.yaml
 
 kubectl apply -f apim/wso2apim-mgt-volume-claim.yaml
-kubectl apply -f apim/wso2apim-worker-volume-claim.yaml
 kubectl apply -f apim/wso2apim-service.yaml
 kubectl apply -f apim/wso2apim-manager-worker-service.yaml
 kubectl apply -f apim/wso2apim-worker-service.yaml
