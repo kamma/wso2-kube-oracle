@@ -16,10 +16,11 @@ kubectl apply -f apim/wso2apim-service.yaml
 kubectl apply -f apim/wso2apim-manager-worker-service.yaml
 kubectl apply -f apim/wso2apim-worker-service.yaml
 
-kubectl apply -f apim-keyman/wso2apim-keyman-service.yaml
+kubectl create -f apim-km/wso2apim-km-service.yaml
+kubectl create -f apim-km/wso2apim-key-manager-service.yaml
 
-echo '-- deploying apim worker ...'
-kubectl apply -f apim-keyman/wso2apim-keyman-deployment.yaml
+echo '-- deploying apim key manager ...'
+kubectl apply -f apim-km/wso2apim-km-deployment.yaml
 echo '-- waiting for 1 minute'
 sleep 1m
 echo '-- deploying apim analytics-1 ...'

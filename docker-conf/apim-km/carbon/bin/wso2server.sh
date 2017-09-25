@@ -314,8 +314,10 @@ do
     -Dcom.ibm.cacheLocalHost=true \
     -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
     -Dorg.wso2.ignoreHostnameVerification=true \
-    -Dprofile=api-key-manager \
     -DworkerNode=false \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done
+
+#   -Dprofile=api-key-manager \
+

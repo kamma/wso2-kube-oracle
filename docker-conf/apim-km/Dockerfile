@@ -2,7 +2,6 @@ FROM wso2is:5.3.0
 
 ARG USER=wso2user
 ARG USER_HOME=/home/${USER}
-ARG ANALYTICS_STARTUP_SCRIPT=init_analytics.sh
 
 COPY carbon/ ${USER_HOME}/tmp/carbon/
 COPY artifacts/* ${USER_HOME}/wso2is-5.3.0/repository/components/lib/
