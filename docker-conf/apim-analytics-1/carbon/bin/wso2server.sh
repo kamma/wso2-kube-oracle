@@ -33,6 +33,8 @@
 # OS specific support.  $var _must_ be set to either true or false.
 #ulimit -n 100000
 
+# NOTE: This is an edited wso2server.sh script to facilitate spark environment variables for WSO2DAS
+
 cygwin=false;
 darwin=false;
 os400=false;
@@ -73,7 +75,7 @@ PRGDIR=`dirname "$PRG"`
 [ -z "$CARBON_HOME" ] && CARBON_HOME=`cd "$PRGDIR/.." ; pwd`
 
 # Set AXIS2_HOME. Needed for One Click JAR Download
-AXIS2_HOME="$CARBON_HOME"
+AXIS2_HOME=$CARBON_HOME
 
 # For Cygwin, ensure paths are in UNIX format before anything is touched
 if $cygwin; then
@@ -137,9 +139,22 @@ fi
 
 # ----- Process the input command ----------------------------------------------
 args=""
+NODE_PARAMS=""
 for c in $*
 do
-    if [ "$c" = "--debug" ] || [ "$c" = "-debug" ] || [ "$c" = "debug" ]; then
+    if [ "$c" = "-receiverNode" ]; then
+          NODE_PARAMS="-DdisableAnalyticsEngine=true -DdisableAnalyticsExecution=true -DdisableIndexing=true -DdisableDataPurging=false -DdisableAnalyticsSparkCtx=true -DdisableAnalyticsStats=true"
+          echo "Starting Data Analytics Server node as a Receiver Node"
+    elif [ "$c" = "-indexerNode" ]; then
+          NODE_PARAMS="-DdisableAnalyticsExecution=true -DdisableAnalyticsEngine=true -DdisableEventSink=true -DdisableAnalyticsSparkCtx=true -DdisableAnalyticsStats=true -DdisableDataPurging=true"
+          echo "Starting Data Analytics Server node as an Indexer Node"
+    elif [ "$c" = "-analyzerNode" ]; then
+          NODE_PARAMS="-DdisableIndexing=true -DdisableEventSink=true -DdisableDataPurging=true -DenableAnalyticsStats=true"
+          echo "Starting Data Analytics Server node as an Analyzer Node"
+    elif [ "$c" = "-dashboardNode" ]; then
+          NODE_PARAMS="-DdisableIndexing=true -DdisableEventSink=true -DdisableDataPurging=true -DenableAnalyticsStats=true -DdisableAnalyticsExecution=true -DdisableAnalyticsEngine=true -DdisableAnalyticsSparkCtx=true "
+          echo "Starting Data Analytics Server node as an Analyzer Node"
+    elif [ "$c" = "--debug" ] || [ "$c" = "-debug" ] || [ "$c" = "debug" ]; then
           CMD="--debug"
           continue
     elif [ "$CMD" = "--debug" ]; then
@@ -179,19 +194,19 @@ elif [ "$CMD" = "start" ]; then
       exit 0
     fi
   fi
-  export CARBON_HOME="$CARBON_HOME"
+  export CARBON_HOME=$CARBON_HOME
 # using nohup sh to avoid erros in solaris OS.TODO
-  nohup sh "$CARBON_HOME"/bin/wso2server.sh $args > /dev/null 2>&1 &
+  nohup sh $CARBON_HOME/bin/wso2server.sh $args $NODE_PARAMS > /dev/null 2>&1 &
   exit 0
 elif [ "$CMD" = "stop" ]; then
-  export CARBON_HOME="$CARBON_HOME"
-  kill -term `cat "$CARBON_HOME"/wso2carbon.pid`
+  export CARBON_HOME=$CARBON_HOME
+  kill -term `cat $CARBON_HOME/wso2carbon.pid`
   exit 0
 elif [ "$CMD" = "restart" ]; then
-  export CARBON_HOME="$CARBON_HOME"
-  kill -term `cat "$CARBON_HOME"/wso2carbon.pid`
+  export CARBON_HOME=$CARBON_HOME
+  kill -term `cat $CARBON_HOME/wso2carbon.pid`
   process_status=0
-  pid=`cat "$CARBON_HOME"/wso2carbon.pid`
+  pid=`cat $CARBON_HOME/wso2carbon.pid`
   while [ "$process_status" -eq "0" ]
   do
         sleep 1;
@@ -200,13 +215,13 @@ elif [ "$CMD" = "restart" ]; then
   done
 
 # using nohup sh to avoid erros in solaris OS.TODO
-  nohup sh "$CARBON_HOME"/bin/wso2server.sh $args > /dev/null 2>&1 &
+  nohup sh $CARBON_HOME/bin/wso2server.sh $args $NODE_PARAMS > /dev/null 2>&1 &
   exit 0
 elif [ "$CMD" = "test" ]; then
     JAVACMD="exec "$JAVACMD""
 elif [ "$CMD" = "version" ]; then
-  cat "$CARBON_HOME"/bin/version.txt
-  cat "$CARBON_HOME"/bin/wso2carbon-version.txt
+  cat $CARBON_HOME/bin/version.txt
+  cat $CARBON_HOME/bin/wso2carbon-version.txt
   exit 0
 fi
 
@@ -255,26 +270,20 @@ fi
 # ----- Execute The Requested Command -----------------------------------------
 
 echo JAVA_HOME environment variable is set to $JAVA_HOME
-echo CARBON_HOME environment variable is set to "$CARBON_HOME"
+echo CARBON_HOME environment variable is set to $CARBON_HOME
 
 cd "$CARBON_HOME"
 
-TMP_DIR="$CARBON_HOME"/tmp
+TMP_DIR=$CARBON_HOME/tmp
 if [ -d "$TMP_DIR" ]; then
-rm -rf "$TMP_DIR"/*
+rm -rf "$TMP_DIR"
 fi
 
 START_EXIT_STATUS=121
 status=$START_EXIT_STATUS
 
-if [ -z "$JVM_MEM_OPTS" ]; then
-   java_version=$("$JAVACMD" -version 2>&1 | awk -F '"' '/version/ {print $2}')
-   JVM_MEM_OPTS="-Xms256m -Xmx1024m"
-   if [ "$java_version" \< "1.8" ]; then
-      JVM_MEM_OPTS="$JVM_MEM_OPTS -XX:MaxPermSize=256m"
-   fi
-fi
-echo "Using Java memory options: $JVM_MEM_OPTS"
+#load spark environment variables
+. $CARBON_HOME/bin/load-spark-env-vars.sh
 
 #To monitor a Carbon server in remote JMX mode on linux host machines, set the below system property.
 #   -Djava.rmi.server.hostname="your.IP.goes.here"
@@ -283,7 +292,7 @@ while [ "$status" = "$START_EXIT_STATUS" ]
 do
     $JAVACMD \
     -Xbootclasspath/a:"$CARBON_XBOOTCLASSPATH" \
-    $JVM_MEM_OPTS \
+    -Xms256m -Xmx1024m -XX:MaxPermSize=256m \
     -XX:+HeapDumpOnOutOfMemoryError \
     -XX:HeapDumpPath="$CARBON_HOME/repository/logs/heap-dump.hprof" \
     $JAVA_OPTS \
@@ -312,8 +321,7 @@ do
     -Dfile.encoding=UTF8 \
     -Djava.net.preferIPv4Stack=true \
     -Dcom.ibm.cacheLocalHost=true \
-    -DworkerNode=false \
-    -Dorg.wso2.ignoreHostnameVerification=true \
+    $NODE_PARAMS \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done
