@@ -20,7 +20,6 @@ metadata:
     app: wso2apim-km
     pattern: wso2apim-pattern-1
 spec:
-  replicas: 2
   strategy:
     type: Recreate
   template:
@@ -28,6 +27,7 @@ spec:
       labels:
         app: wso2apim-km
         node: key-manager
+        pattern: wso2apim-pattern-1
     spec:
       containers:
       - image: 10.201.152.1:5000/wso2am-km-pattern-1:2.1.0
