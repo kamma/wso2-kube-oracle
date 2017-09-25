@@ -10,7 +10,7 @@
             <name>WSO2_CARBON_DB</name>
             <description>The datasource used for master database</description>
             <jndiConfig>
-                <name>jdbc/WSO2_CARBON_DB</name>
+                <name>jdbc/WSO2CarbonDB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
