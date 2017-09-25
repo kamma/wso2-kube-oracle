@@ -261,7 +261,7 @@ cd "$CARBON_HOME"
 
 TMP_DIR="$CARBON_HOME"/tmp
 if [ -d "$TMP_DIR" ]; then
-rm -rf "$TMP_DIR"/*
+rm -rf "$TMP_DIR"
 fi
 
 START_EXIT_STATUS=121
@@ -312,8 +312,9 @@ do
     -Dfile.encoding=UTF8 \
     -Djava.net.preferIPv4Stack=true \
     -Dcom.ibm.cacheLocalHost=true \
-    -DworkerNode=false \
+    -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
     -Dorg.wso2.ignoreHostnameVerification=true \
+    -DworkerNode=false \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done
