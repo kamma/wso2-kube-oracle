@@ -18,7 +18,7 @@ metadata:
   name: wso2apim-key-manager
   labels:
     node: key-manager
-    pattern: wso2apim-pattern-2
+    pattern: wso2apim-pattern-1
 spec:
   ports:
     # ports that this service should serve on

@@ -18,7 +18,7 @@ metadata:
   name: wso2apim-km
   labels:
     app: wso2apim-km
-    pattern: wso2apim-pattern-2
+    pattern: wso2apim-pattern-1
 spec:
   replicas: 2
   strategy:
@@ -32,7 +32,7 @@ spec:
       containers:
       - image: 10.201.152.1:5000/wso2am-km-pattern-1:2.1.0
         name: wso2apim-km
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         -
           containerPort: 9763
