@@ -32,7 +32,7 @@ ARG WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip
 ARG JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
 ARG JAVA_HOME=${USER_HOME}/java
 ARG STARTUP_SCRIPT=init_carbon.sh
-ARG JDBC_DRIVER=ARG JDBC_DRIVER=ojdbc6-11.*.jar
+ARG JDBC_DRIVER=ojdbc6-11*.jar
 ARG DNS_JAVA=dnsjava-2.1.8.jar
 ARG KUBERNETES_MEMBERSHIP_SCHEME=kubernetes-membership-scheme-1.0.*.jar
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
