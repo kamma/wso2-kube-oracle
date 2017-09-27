@@ -70,12 +70,6 @@ kubectl create configmap apim-pubstore-tm-2-axis2 --from-file=../confs/apim-pubs
 kubectl create configmap apim-pubstore-tm-2-datasources --from-file=../confs/apim-pubstore-tm-2/repository/conf/datasources/
 kubectl create configmap apim-pubstore-tm-2-tomcat --from-file=../confs/apim-pubstore-tm-2/repository/conf/tomcat/
 
-# databases
-echo 'deploying databases ...'
-kubectl create -f rdbms/rdbms-persistent-volume-claim.yaml
-kubectl create -f rdbms/rdbms-service.yaml
-kubectl create -f rdbms/rdbms-deployment.yaml
-
 echo 'deploying services and volume claims ...'
 kubectl create -f apim-analytics/wso2apim-analytics-service.yaml
 kubectl create -f apim-analytics/wso2apim-analytics-1-service.yaml
