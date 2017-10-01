@@ -113,8 +113,8 @@ sleep 30s
 echo 'deploying apim manager-worker ...'
 kubectl create -f apim-gateway/wso2apim-manager-worker-deployment.yaml
 
-echo 'deploying wso2apim and wso2apim-analytics ingresses ...'
-kubectl create -f ingresses/nginx-default-http-backend.yaml
-kubectl create -f ingresses/nginx-ingress-controller.yaml
-kubectl create -f ingresses/wso2apim-analytics-ingress.yaml
-kubectl create -f ingresses/wso2apim-ingress.yaml
+#echo 'deploying wso2apim and wso2apim-analytics ingresses ...'
+#kubectl create -f ingresses/nginx-default-http-backend.yaml
+#kubectl create -f ingresses/nginx-ingress-controller.yaml
+#kubectl create -f ingresses/wso2apim-analytics-ingress.yaml
+#kubectl create -f ingresses/wso2apim-ingress.yaml
