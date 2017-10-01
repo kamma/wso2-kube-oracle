@@ -18,7 +18,7 @@
                     <username>wso2pubstore1</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>200</maxActive>
+                    <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
@@ -39,7 +39,7 @@
                     <username>wso2am</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>200</maxActive>
+                    <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
@@ -60,7 +60,7 @@
                     <username>wso2um</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>200</maxActive>
+                    <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
@@ -81,7 +81,7 @@
                     <username>wso2reg</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>200</maxActive>
+                    <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
@@ -102,7 +102,7 @@
                     <username>wso2stats</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>200</maxActive>
+                    <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
