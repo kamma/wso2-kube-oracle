@@ -26,10 +26,12 @@ spec:
       name: 'servlet-http'
       protocol: TCP
       port: 9763
+      nodePort: 32028
     -
       name: 'servlet-https'
       protocol: TCP
       port: 9443
+      nodePort: 32029
   # label keys and values that must match in order to receive traffic for this service
   selector:
     app: wso2apim-km
