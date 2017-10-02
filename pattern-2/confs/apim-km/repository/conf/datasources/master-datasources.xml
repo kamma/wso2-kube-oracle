@@ -90,26 +90,27 @@
             </definition>
         </datasource>
 
-        <datasource>
+         <datasource>
             <name>WSO2AM_STATS_DB</name>
-            <description>The datasource used for setting statistics to API Manager</description>
+            <description>The datasource used for getting statistics to API Manager</description>
             <jndiConfig>
                 <name>jdbc/WSO2AM_STATS_DB</name>
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
-                    <username>wso2stats</username>
-                    <password>Passw0rd</password>
-                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>80</maxActive>
+                    <url>jdbc:h2:../tmpStatDB/WSO2AM_STATS_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000;AUTO_SERVER=TRUE</url>
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <defaultAutoCommit>false</defaultAutoCommit>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
                 </configuration>
             </definition>
-        </datasource>
+         </datasource>
 
         <datasource>
             <name>WSO2_MB_STORE_DB</name>

@@ -11,21 +11,19 @@
         <datasource>
             <name>WSO2_ANALYTICS_EVENT_STORE_DB</name>
             <description>The datasource used for analytics record store</description>
-            <jndiConfig>
-                <name>jdbc/WSO2_ANALYTICS_EVENT_STORE_DB</name>
-            </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
-                    <username>wso2stats</username>
-                    <password>Passw0rd</password>
-                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>80</maxActive>
+                    <url>jdbc:h2:repository/database/ANALYTICS_EVENT_STORE;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
-                    <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
-                    <validationInterval>30000</validationInterval>
                     <defaultAutoCommit>false</defaultAutoCommit>
+                    <initialSize>0</initialSize>
+                    <testWhileIdle>true</testWhileIdle>
+                    <minEvictableIdleTimeMillis>4000</minEvictableIdleTimeMillis>
                     <defaultTransactionIsolation>READ_COMMITTED</defaultTransactionIsolation>
                 </configuration>
             </definition>
@@ -34,21 +32,19 @@
         <datasource>
             <name>WSO2_ANALYTICS_PROCESSED_DATA_STORE_DB</name>
             <description>The datasource used for analytics record store</description>
-            <jndiConfig>
-                <name>jdbc/WSO2_ANALYTICS_PROCESSED_DATA_STORE_DB</name>
-            </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
-                    <username>wso2stats</username>
-                    <password>Passw0rd</password>
-                    <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
-                    <maxActive>80</maxActive>
+                    <url>jdbc:h2:repository/database/ANALYTICS_PROCESSED_DATA_STORE;AUTO_SERVER=TRUE;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
-                    <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
-                    <validationInterval>30000</validationInterval>
                     <defaultAutoCommit>false</defaultAutoCommit>
+                    <initialSize>0</initialSize>
+                    <testWhileIdle>true</testWhileIdle>
+                    <minEvictableIdleTimeMillis>4000</minEvictableIdleTimeMillis>
                     <defaultTransactionIsolation>READ_COMMITTED</defaultTransactionIsolation>
                 </configuration>
             </definition>
@@ -57,4 +53,3 @@
     </datasources>
 
 </datasources-configuration>
-
