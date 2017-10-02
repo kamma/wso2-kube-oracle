@@ -27,22 +27,22 @@ spec:
       name: 'pass-through-http'
       protocol: TCP
       port: 8280
-      targetPort: 32080
+      nodePort: 32080
     -
       name: 'pass-through-https'
       protocol: TCP
       port: 8243
-      targetPort: 32043
+      nodePort: 32043
     -
       name: 'servlet-http'
       protocol: TCP
       port: 9763
-      targetPort: 32038
+      nodePort: 32038
     -
       name: 'servlet-https'
       protocol: TCP
       port: 9443
-      targetPort: 32039
+      nodePort: 32039
   # label keys and values that must match in order to receive traffic for this service
   selector:
     app: wso2apim-gw

@@ -29,7 +29,7 @@ spec:
       labels:
         app: wso2apim-gw
         node: manager-worker
-        app-sv: wso2apim-gw-sv
+        pattern: wso2apim-pattern-2
     spec:
       containers:
       -
