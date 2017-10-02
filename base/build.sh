@@ -7,6 +7,7 @@ set -e
 this_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 analytics_dir=$(cd "${this_dir}/analytics"; pwd)
 apim_dir=$(cd "${this_dir}/apim"; pwd)
+ids_dir=$(cd "${this_dir}/ids"; pwd)
 
 function docker_build() {
     tag=$1
@@ -21,6 +22,6 @@ function docker_build() {
     fi
 }
 
-docker_build docker.wso2.com/wso2am-kubernetes:2.1.0 $apim_dir
-docker_build docker.wso2.com/wso2am-analytics-kubernetes:2.1.0 $analytics_dir
-
+docker_build wso2am-kubernetes:2.1.0 $apim_dir
+docker_build wso2am-analytics-kubernetes:2.1.0 $analytics_dir
+docker_build wso2am-km-kubernetes:2.1.0 $ids_dir
