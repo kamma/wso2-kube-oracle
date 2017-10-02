@@ -20,16 +20,19 @@ metadata:
     app-sv: wso2apim-gw-sv
     pattern: wso2apim-pattern-2
 spec:
+  type: NodePort
   ports:
     # ports that this service should serve on
     -
       name: 'servlet-http'
       protocol: TCP
       port: 9763
+      targetPort: 32038
     -
       name: 'servlet-https'
       protocol: TCP
       port: 9443
+      targetPort: 32039
   # label keys and values that must match in order to receive traffic for this service
   selector:
     app-sv: wso2apim-gw-sv
