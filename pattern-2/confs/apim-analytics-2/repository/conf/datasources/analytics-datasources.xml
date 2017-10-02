@@ -11,6 +11,9 @@
         <datasource>
             <name>WSO2_ANALYTICS_EVENT_STORE_DB</name>
             <description>The datasource used for analytics record store</description>
+            <jndiConfig>
+                <name>jdbc/WSO2_ANALYTICS_EVENT_STORE_DB</name>
+            </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
                     <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
@@ -31,6 +34,9 @@
         <datasource>
             <name>WSO2_ANALYTICS_PROCESSED_DATA_STORE_DB</name>
             <description>The datasource used for analytics record store</description>
+            <jndiConfig>
+                <name>jdbc/WSO2_ANALYTICS_PROCESSED_DATA_STORE_DB</name>
+            </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
                     <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
