@@ -15,14 +15,24 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: wso2apim-gw-sv
+  name: wso2apim-gw
   labels:
-    app-sv: wso2apim-gw-sv
+    app: wso2apim-gw
     pattern: wso2apim-pattern-2
 spec:
   type: NodePort
   ports:
     # ports that this service should serve on
+    -
+      name: 'pass-through-http'
+      protocol: TCP
+      port: 8280
+      targetPort: 32080
+    -
+      name: 'pass-through-https'
+      protocol: TCP
+      port: 8243
+      targetPort: 32043
     -
       name: 'servlet-http'
       protocol: TCP
@@ -35,5 +45,5 @@ spec:
       targetPort: 32039
   # label keys and values that must match in order to receive traffic for this service
   selector:
-    app-sv: wso2apim-gw-sv
+    app: wso2apim-gw
   sessionAffinity: ClientIP

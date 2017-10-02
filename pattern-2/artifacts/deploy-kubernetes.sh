@@ -79,8 +79,7 @@ kubectl create -f apim-pubstore-tm/wso2apim-service.yaml
 kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-1-service.yaml
 kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-2-service.yaml
 
-kubectl create -f apim-gateway/wso2apim-sv-service.yaml
-kubectl create -f apim-gateway/wso2apim-pt-service.yaml
+kubectl create -f apim-gateway/wso2apim-gw-service.yaml
 kubectl create -f apim-gateway/wso2apim-manager-worker-service.yaml
 
 kubectl create -f apim-km/wso2apim-km-service.yaml

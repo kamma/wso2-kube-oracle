@@ -25,11 +25,19 @@ spec:
     -
       name: "http"
       protocol: TCP
-      port: 9673
+      port: 9763
     -
       name: "https"
       protocol: TCP
       port: 9443
+    -
+      name: "http-ps"
+      protocol: TCP
+      port: 8280
+    -
+      name: "https-ps"
+      protocol: TCP
+      port: 8243
   # label keys and values that must match in order to receive traffic for this service
   selector:
     node: manager-worker
