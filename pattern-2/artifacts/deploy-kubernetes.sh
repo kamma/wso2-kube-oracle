@@ -82,8 +82,7 @@ kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-2-service.yaml
 kubectl create -f apim-gateway/wso2apim-gw-service.yaml
 kubectl create -f apim-gateway/wso2apim-manager-worker-service.yaml
 
-kubectl create -f apim-km/wso2apim-km-1-service.yaml
-kubectl create -f apim-km/wso2apim-km-2-service.yaml
+kubectl create -f apim-km/wso2apim-km-node-service.yaml
 kubectl create -f apim-km/wso2apim-km-service.yaml
 
 kubectl create -f apim-pubstore-tm/wso2apim-tm1-volume-claim.yaml
@@ -107,9 +106,7 @@ kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-2-deployment.yaml
 
 sleep 30s
 echo 'deploying apim key manager...'
-kubectl create -f apim-km/wso2apim-km-1-deployment.yaml
-sleep 30s
-kubectl create -f apim-km/wso2apim-km-2-deployment.yaml
+kubectl create -f apim-km/wso2apim-km-node-deployment.yaml
 
 sleep 30s
 echo 'deploying apim manager-worker ...'
