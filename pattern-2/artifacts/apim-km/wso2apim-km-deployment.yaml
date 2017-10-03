@@ -20,7 +20,7 @@ metadata:
     app: wso2apim-km
     pattern: wso2apim-pattern-2
 spec:
-  replicas: 2
+#  replicas: 2
   strategy:
     type: Recreate
   template:
@@ -30,7 +30,7 @@ spec:
         node: key-manager
     spec:
       containers:
-      - image: 10.201.152.1:5000/wso2am-kubernetes:2.1.0
+      - image: 10.201.152.1:5000/wso2am-km-kubernetes:2.1.0
         name: wso2apim-km
         imagePullPolicy: Always
         ports:

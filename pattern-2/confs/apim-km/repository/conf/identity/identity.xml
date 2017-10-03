@@ -85,7 +85,7 @@
                        iii. PrivateAssociationReplicationStore
         -->
         <!-- Specify full qualified class name of the class which going to use as private association store -->
-        <!-- 
+        <!--
 		<OpenIDPrivateAssociationStoreClass>org.wso2.carbon.identity.provider.openid.PrivateAssociationCryptoStore</OpenIDPrivateAssociationStoreClass>
 	-->
         <!-- The expiration time (in minutes) for the OpenID association -->
@@ -246,7 +246,7 @@
             <SignatureAlgorithm>SHA256withRSA</SignatureAlgorithm>
             <!-- Comment out to add Audience values to the JWT token (id_token)  -->
             <!--Audiences>
-                  <Audience>${carbon.protocol}://${carbon.host}:${carbon.management.port}/oauth2/token</Audience>
+                   <Audience>${carbon.protocol}://${carbon.host}:${carbon.management.port}/oauth2/token</Audience>
             </Audiences -->
             <!--
                 Default value for IDTokenIssuerID, is OAuth2TokenEPUrl.
@@ -429,7 +429,7 @@
         <EventListener enable="false"
             name="org.wso2.carbon.identity.data.publisher.application.authentication.impl.DASSessionDataPublisherImpl"
             orderId="11" type="org.wso2.carbon.identity.core.handler.AbstractIdentityMessageHandler"/>
-        <EventListener enable="false"
+        <EventListener enable="true"
             name="org.wso2.carbon.identity.data.publisher.application.authentication.AuthnDataPublisherProxy"
             orderId="11" type="org.wso2.carbon.identity.core.handler.AbstractIdentityMessageHandler"/>
     </EventListeners>
