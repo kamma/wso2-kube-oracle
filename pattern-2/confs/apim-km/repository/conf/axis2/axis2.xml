@@ -72,12 +72,8 @@
     <!--the directory in which modules are deployed inside axis2 repository-->
     <parameter name="ModulesDirectory">axis2modules</parameter>
 
-    <parameter name="userAgent" locked="true">
-        WSO2 Identity Server-5.3.0
-    </parameter>
-    <parameter name="server" locked="true">
-        WSO2 Identity Server-5.3.0
-    </parameter>
+    <parameter name="userAgent" locked="true"> WSO2 Identity Server-5.3.0 </parameter>
+    <parameter name="server" locked="true"> WSO2 Identity Server-5.3.0 </parameter>
 
     <!-- ========================================================================-->
 
@@ -96,8 +92,7 @@
 
     <!-- Synapse Configuration file -->
     <parameter name="SynapseConfig.ConfigurationFile" locked="false">
-        ./repository/deployment/server/synapse-configs
-    </parameter>
+        ./repository/deployment/server/synapse-configs </parameter>
 
     <!-- Synapse Home parameter -->
     <parameter name="SynapseConfig.HomeDirectory" locked="false">.</parameter>
@@ -139,36 +134,36 @@
 
     <messageReceivers>
         <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only"
-                         class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+            class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
         <messageReceiver mep="http://www.w3.org/ns/wsdl/robust-in-only"
-                         class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+            class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
         <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out"
-                         class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+            class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
     </messageReceivers>
 
     <messageFormatters>
         <messageFormatter contentType="application/x-www-form-urlencoded"
-                          class="org.apache.axis2.transport.http.XFormURLEncodedFormatter"/>
+            class="org.apache.axis2.transport.http.XFormURLEncodedFormatter"/>
         <messageFormatter contentType="multipart/form-data"
-                          class="org.apache.axis2.transport.http.MultipartFormDataFormatter"/>
+            class="org.apache.axis2.transport.http.MultipartFormDataFormatter"/>
         <messageFormatter contentType="application/xml"
-                          class="org.apache.axis2.transport.http.ApplicationXMLFormatter"/>
+            class="org.apache.axis2.transport.http.ApplicationXMLFormatter"/>
         <messageFormatter contentType="text/xml"
-                          class="org.apache.axis2.transport.http.SOAPMessageFormatter"/>
+            class="org.apache.axis2.transport.http.SOAPMessageFormatter"/>
         <messageFormatter contentType="application/soap+xml"
-                          class="org.apache.axis2.transport.http.SOAPMessageFormatter"/>
+            class="org.apache.axis2.transport.http.SOAPMessageFormatter"/>
 
         <!--JSON Message Formatters-->
         <!--messageFormatter contentType="application/json"
                           class="org.apache.axis2.json.JSONMessageFormatter"/-->
         <messageFormatter contentType="application/json"
-                                  class="org.apache.axis2.json.gson.JsonFormatter" />
+            class="org.apache.axis2.json.gson.JsonFormatter"/>
         <messageFormatter contentType="application/json/badgerfish"
-                          class="org.apache.axis2.json.JSONBadgerfishMessageFormatter"/>
+            class="org.apache.axis2.json.JSONBadgerfishMessageFormatter"/>
         <!--messageFormatter contentType="text/javascript"
                           class="org.apache.axis2.json.JSONMessageFormatter"/-->
         <messageFormatter contentType="text/javascript"
-                                  class="org.apache.axis2.json.gson.JsonFormatter" />
+            class="org.apache.axis2.json.gson.JsonFormatter"/>
 
         <!--messageFormatter contentType="application/x-www-form-urlencoded"
                         class="org.wso2.carbon.relay.ExpandingMessageFormatter"/-->
@@ -188,23 +183,22 @@
 
     <messageBuilders>
         <messageBuilder contentType="application/xml"
-                        class="org.apache.axis2.builder.ApplicationXMLBuilder"/>
+            class="org.apache.axis2.builder.ApplicationXMLBuilder"/>
         <messageBuilder contentType="application/x-www-form-urlencoded"
-                        class="org.apache.axis2.builder.XFormURLEncodedBuilder"/>
+            class="org.apache.axis2.builder.XFormURLEncodedBuilder"/>
         <messageBuilder contentType="multipart/form-data"
-                        class="org.apache.axis2.builder.MultipartFormDataBuilder"/>
+            class="org.apache.axis2.builder.MultipartFormDataBuilder"/>
 
         <!--JSON Message Builders-->
         <!--messageBuilder contentType="application/json"
                         class="org.apache.axis2.json.JSONOMBuilder"/-->
         <messageBuilder contentType="application/json"
-                                class="org.apache.axis2.json.gson.JsonBuilder" />
+            class="org.apache.axis2.json.gson.JsonBuilder"/>
         <messageBuilder contentType="application/json/badgerfish"
-                        class="org.apache.axis2.json.JSONBadgerfishOMBuilder"/>
+            class="org.apache.axis2.json.JSONBadgerfishOMBuilder"/>
         <!--messageBuilder contentType="text/javascript"
                         class="org.apache.axis2.json.JSONOMBuilder"/-->
-        <messageBuilder contentType="text/javascript"
-                                class="org.apache.axis2.json.gson.JsonBuilder" />
+        <messageBuilder contentType="text/javascript" class="org.apache.axis2.json.gson.JsonBuilder"/>
 
         <!--messageBuilder contentType="application/xml"
      		        class="org.wso2.carbon.relay.BinaryRelayBuilder"/-->
@@ -231,7 +225,7 @@
     <!-- In Transports -->
     <!-- ================================================= -->
     <transportReceiver name="http"
-                       class="org.wso2.carbon.core.transports.http.HttpTransportListener">
+        class="org.wso2.carbon.core.transports.http.HttpTransportListener">
         <!--
            Uncomment the following if you are deploying this within an application server. You
            need to specify the HTTP port of the application server
@@ -274,7 +268,7 @@
 
 
     <transportReceiver name="https"
-                       class="org.wso2.carbon.core.transports.http.HttpsTransportListener">
+        class="org.wso2.carbon.core.transports.http.HttpsTransportListener">
         <!--
            Uncomment the following if you are deploying this within an application server. You
            need to specify the HTTPS port of the application server
@@ -385,20 +379,18 @@
     <!--transportSender name="tcp"
                      class="org.apache.axis2.transport.tcp.TCPTransportSender"/-->
     <transportReceiver name="local"
-                       class="org.wso2.carbon.core.transports.local.CarbonLocalTransportReceiver"/>
+        class="org.wso2.carbon.core.transports.local.CarbonLocalTransportReceiver"/>
     <transportSender name="local"
-                     class="org.wso2.carbon.core.transports.local.CarbonLocalTransportSender"/>
+        class="org.wso2.carbon.core.transports.local.CarbonLocalTransportSender"/>
     <!--<transportSender name="jms"
                      class="org.apache.axis2.transport.jms.JMSSender"/>-->
-    <transportSender name="http"
-                     class="org.apache.axis2.transport.http.CommonsHTTPTransportSender">
+    <transportSender name="http" class="org.apache.axis2.transport.http.CommonsHTTPTransportSender">
         <parameter name="PROTOCOL">HTTP/1.1</parameter>
         <parameter name="Transfer-Encoding">chunked</parameter>
         <!-- This parameter has been added to overcome problems encounted in SOAP action parameter -->
         <parameter name="OmitSOAP12Action">true</parameter>
     </transportSender>
-    <transportSender name="https"
-                     class="org.apache.axis2.transport.http.CommonsHTTPTransportSender">
+    <transportSender name="https" class="org.apache.axis2.transport.http.CommonsHTTPTransportSender">
         <parameter name="PROTOCOL">HTTP/1.1</parameter>
         <parameter name="Transfer-Encoding">chunked</parameter>
         <!-- This parameter has been added to overcome problems encounted in SOAP action parameter -->
@@ -462,40 +454,40 @@
         <phase name="Validation"/>
         <phase name="Transport">
             <handler name="RequestURIBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher">
+                class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher">
                 <order phase="Transport"/>
             </handler>
             <handler name="SOAPActionBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher">
+                class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher">
                 <order phase="Transport"/>
             </handler>
             <handler name="RequestURIOperationDispatcher"
-                     class="org.apache.axis2.dispatchers.RequestURIOperationDispatcher" />
-            <handler name="JSONMessageHandler"
-                     class="org.apache.axis2.json.gson.JSONMessageHandler" />
+                class="org.apache.axis2.dispatchers.RequestURIOperationDispatcher"/>
+            <handler name="JSONMessageHandler" class="org.apache.axis2.json.gson.JSONMessageHandler"
+            />
         </phase>
         <phase name="Addressing">
             <handler name="AddressingBasedDispatcher"
-                     class="org.wso2.carbon.core.multitenancy.MultitenantAddressingBasedDispatcher">
+                class="org.wso2.carbon.core.multitenancy.MultitenantAddressingBasedDispatcher">
                 <order phase="Addressing"/>
             </handler>
         </phase>
         <phase name="Ghost">
-            <handler name="GhostDispatcher"
-                     class="org.wso2.carbon.core.dispatchers.GhostDispatcher"/>
+            <handler name="GhostDispatcher" class="org.wso2.carbon.core.dispatchers.GhostDispatcher"
+            />
         </phase>
         <phase name="Security"/>
         <phase name="PreDispatch"/>
         <phase name="Dispatch" class="org.apache.axis2.engine.DispatchPhase">
             <handler name="RequestURIBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher"/>
             <handler name="SOAPActionBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher"/>
             <handler name="SOAPMessageBodyBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.SOAPMessageBodyBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.SOAPMessageBodyBasedDispatcher"/>
 
             <handler name="HTTPLocationBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.HTTPLocationBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.HTTPLocationBasedDispatcher"/>
         </phase>
         <!--  System pre defined phases       -->
         <phase name="RMPhase"/>
@@ -541,37 +533,37 @@
         <phase name="Validation"/>
         <phase name="Transport">
             <handler name="RequestURIBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher">
+                class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher">
                 <order phase="Transport"/>
             </handler>
             <handler name="SOAPActionBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher">
+                class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher">
                 <order phase="Transport"/>
             </handler>
         </phase>
 
         <phase name="Addressing">
             <handler name="AddressingBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.AddressingBasedDispatcher">
+                class="org.apache.axis2.dispatchers.AddressingBasedDispatcher">
                 <order phase="Addressing"/>
             </handler>
         </phase>
         <phase name="Ghost">
-            <handler name="GhostDispatcher"
-                     class="org.wso2.carbon.core.dispatchers.GhostDispatcher"/>
+            <handler name="GhostDispatcher" class="org.wso2.carbon.core.dispatchers.GhostDispatcher"
+            />
         </phase>
         <phase name="Security"/>
         <phase name="PreDispatch"/>
         <phase name="Dispatch" class="org.apache.axis2.engine.DispatchPhase">
             <handler name="RequestURIBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.RequestURIBasedDispatcher"/>
             <handler name="SOAPActionBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.SOAPActionBasedDispatcher"/>
             <handler name="SOAPMessageBodyBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.SOAPMessageBodyBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.SOAPMessageBodyBasedDispatcher"/>
 
             <handler name="HTTPLocationBasedDispatcher"
-                     class="org.apache.axis2.dispatchers.HTTPLocationBasedDispatcher"/>
+                class="org.apache.axis2.dispatchers.HTTPLocationBasedDispatcher"/>
         </phase>
         <phase name="RMPhase"/>
         <phase name="OpPhase"/>
@@ -587,7 +579,7 @@
         <phase name="PolicyDetermination"/>
         <phase name="MessageOut"/>
         <phase name="Security"/>
-	<phase name="Transport"/>
+        <phase name="Transport"/>
         <!--
            The MsgOutObservation phase is used to observe messages just before the
            responses are sent out. In this phase, we could do some things such as SOAP message
@@ -600,20 +592,28 @@
         <phase name="StatReporting"/>
     </phaseOrder>
 
+    <!-- ================================================= -->
+    <!--                Clustering                         -->
+    <!-- ================================================= -->
+    <!--
+     To enable clustering for this node, set the value of "enable" attribute of the "clustering"
+     element to "true". The initialization of a node in the cluster is handled by the class
+     corresponding to the "class" attribute of the "clustering" element. It is also responsible for
+     getting this node to join the cluster.
+     -->
     <clustering class="org.wso2.carbon.core.clustering.hazelcast.HazelcastClusteringAgent"
-                enable="false">
-
+        enable="true">
+        
         <!--
            This parameter indicates whether the cluster has to be automatically initalized
            when the AxisConfiguration is built. If set to "true" the initialization will not be
            done at that stage, and some other party will have to explictly initialize the cluster.
         -->
         <parameter name="AvoidInitiation">true</parameter>
-
+        
         <!--
            The membership scheme used in this setup. The only values supported at the moment are
            "multicast" and "wka"
-
            1. multicast - membership is automatically discovered using multicasting
            2. wka - Well-Known Address based multicasting. Membership is discovered with the help
                     of one or more nodes running at a Well-Known Address. New members joining a
@@ -623,26 +623,29 @@
                     is deemed to have left the cluster, it will be detected by the Group Membership
                     Service (GMS) using a TCP ping mechanism.
         -->
-        <parameter name="membershipScheme">multicast</parameter>
+        <parameter name="membershipScheme">kubernetes</parameter>
+        <parameter name="membershipSchemeClassName">org.wso2.carbon.membership.scheme.kubernetes.KubernetesMembershipScheme</parameter>
+        <parameter name="KUBERNETES_SERVICES">wso2apim-key-manager</parameter>
+        <parameter name="KUBERNETES_NAMESPACE">wso2</parameter>
         <!--<parameter name="licenseKey">xxx</parameter>-->
         <!--<parameter name="mgtCenterURL">http://localhost:8081/mancenter/</parameter>-->
-
+        
         <!--
          The clustering domain/group. Nodes in the same group will belong to the same multicast
          domain. There will not be interference between nodes in different groups.
         -->
-        <parameter name="domain">wso2.carbon.domain</parameter>
-
+        <parameter name="domain">wso2.am.domain</parameter>
+        
         <!-- The multicast address to be used -->
         <!--<parameter name="mcastAddress">228.0.0.4</parameter>-->
-
+        
         <!-- The multicast port to be used -->
         <parameter name="mcastPort">45564</parameter>
-
+        
         <parameter name="mcastTTL">100</parameter>
-
+        
         <parameter name="mcastTimeout">60</parameter>
-
+        
         <!--
            The IP address of the network interface to which the multicasting has to be bound to.
            Multicasting would be done using this interface.
@@ -651,9 +654,9 @@
             <parameter name="mcastBindAddress">127.0.0.1</parameter>
         -->
         <!-- The host name or IP address of this member -->
-
-        <parameter name="localMemberHost">127.0.0.1</parameter>
-
+        
+        <parameter name="localMemberHost">api-manager</parameter>
+        
         <!--
             The bind adress of this member. The difference between localMemberHost & localMemberBindAddress
             is that localMemberHost is the one that is advertised by this member, while localMemberBindAddress
@@ -662,13 +665,13 @@
         <!--
         <parameter name="localMemberBindAddress">127.0.0.1</parameter>
         -->
-
+        
         <!--
         The TCP port used by this member. This is the port through which other nodes will
         contact this member
          -->
         <parameter name="localMemberPort">4000</parameter>
-
+        
         <!--
             The bind port of this member. The difference between localMemberPort & localMemberBindPort
             is that localMemberPort is the one that is advertised by this member, while localMemberBindPort
@@ -677,7 +680,7 @@
         <!--
         <parameter name="localMemberBindPort">4001</parameter>
         -->
-
+        
         <!--
         Properties specific to this member
         -->
@@ -686,40 +689,29 @@
             <property name="mgtConsoleURL" value="https://${hostName}:${httpsPort}/"/>
             <property name="subDomain" value="worker"/>
         </parameter>
-
-        <!--
-        Uncomment the following section to load custom Hazelcast data serializers.
-        -->
-        <!--
-        <parameter name="hazelcastSerializers">
-            <serializer typeClass="java.util.TreeSet">org.wso2.carbon.hazelcast.serializer.TreeSetSerializer
-            </serializer>
-            <serializer typeClass="java.util.Map">org.wso2.carbon.hazelcast.serializer.MapSerializer</serializer>
-        </parameter>
-        -->
-
+        
         <!--
            The list of static or well-known members. These entries will only be valid if the
            "membershipScheme" above is set to "wka"
         -->
         <members>
             <member>
-                <hostName>127.0.0.1</hostName>
+                <hostName>api-manager</hostName>
                 <port>4000</port>
             </member>
         </members>
-
+        
         <!--
         Enable the groupManagement entry if you need to run this node as a cluster manager.
         Multiple application domains with different GroupManagementAgent implementations
         can be defined in this section.
         -->
         <groupManagement enable="false">
-            <applicationDomain name="wso2.as.domain"
-                               description="AS group"
-                               agent="org.wso2.carbon.core.clustering.hazelcast.HazelcastGroupManagementAgent"
-                               subDomain="worker"
-                               port="2222"/>
+            <applicationDomain name="wso2.apim.domain"
+                description="APIM group"
+                agent="org.wso2.carbon.core.clustering.hazelcast.HazelcastGroupManagementAgent"
+                subDomain="worker"
+                port="2222"/>
         </groupManagement>
     </clustering>
 </axisconfig>
