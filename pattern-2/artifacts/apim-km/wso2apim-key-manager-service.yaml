@@ -17,15 +17,35 @@ kind: Service
 metadata:
   name: wso2apim-key-manager
   labels:
-    node: key-manager
+    node-1: key-manager
     pattern: wso2apim-pattern-2
 spec:
   ports:
     # ports that this service should serve on
     -
+      name: "jms-tcp"
+      protocol: TCP
+      port: 5672
+    -
+      name: "binary-secure"
+      protocol: TCP
+      port: 9711
+    -
+      name: "binary"
+      protocol: TCP
+      port: 9611
+    -
+      name: "thrift-secure"
+      protocol: TCP
+      port: 7711
+    -
+      name: "thrift"
+      protocol: TCP
+      port: 7611
+    -
       name: "http"
       protocol: TCP
-      port: 9673
+      port: 9763
     -
       name: "https"
       protocol: TCP
