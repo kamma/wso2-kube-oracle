@@ -76,6 +76,10 @@ spec:
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/bin/"
           - name: apim-analytics-single-conf
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf/"
+          - name: apim-analytics-single-spark
+            mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-analytics-spark/"
+          - name: apim-analytics-single-axis2
+            mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-axis2/"
           - name: apim-analytics-single-datasources
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-datasources/"
           - name: apim-analytics-single-tomcat
@@ -87,6 +91,12 @@ spec:
         - name: apim-analytics-single-conf
           configMap:
             name: apim-analytics-single-conf
+        - name: apim-analytics-single-spark
+          configMap:
+            name: apim-analytics-single-spark
+        - name: apim-analytics-single-axis2
+          configMap:
+            name: apim-analytics-single-axis2
         - name: apim-analytics-single-datasources
           configMap:
             name: apim-analytics-single-datasources

@@ -30,8 +30,6 @@ kubectl create -f volumes/persistent-volumes.yaml
 # Configuration Maps
 kubectl create configmap apim-analytics-single-bin --from-file=../confs/apim-analytics-single/bin/
 kubectl create configmap apim-analytics-single-conf --from-file=../confs/apim-analytics-single/repository/conf/
-kubectl create configmap apim-analytics-single-spark --from-file=../confs/apim-analytics-single/repository/conf/analytics/spark/
-kubectl create configmap apim-analytics-single-axis2 --from-file=../confs/apim-analytics-single/repository/conf/axis2/
 kubectl create configmap apim-analytics-single-datasources --from-file=../confs/apim-analytics-single/repository/conf/datasources/
 kubectl create configmap apim-analytics-single-tomcat --from-file=../confs/apim-analytics-single/repository/conf/tomcat/
 
