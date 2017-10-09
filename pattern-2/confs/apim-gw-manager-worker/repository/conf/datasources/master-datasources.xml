@@ -48,7 +48,7 @@
             </definition>
         </datasource>
 
-        <datasource>
+        <!--datasource>
             <name>WSO2UM_DB</name>
             <description>The datasource used by user manager</description>
             <jndiConfig>
@@ -109,7 +109,7 @@
                     <validationInterval>30000</validationInterval>
                 </configuration>
             </definition>
-        </datasource>
+        </datasource-->
 
         <datasource>
             <name>WSO2_MB_STORE_DB</name>
