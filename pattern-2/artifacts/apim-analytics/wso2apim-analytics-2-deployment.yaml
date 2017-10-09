@@ -72,6 +72,8 @@ spec:
           initialDelaySeconds: 300
           periodSeconds: 20
         volumeMounts:
+          - name: apim-analytics-2-h2-storage-volume
+            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/repository/database"
           - name: apim-analytics-2-bin
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/bin/"
           - name: apim-analytics-2-conf
@@ -85,6 +87,9 @@ spec:
           - name: apim-analytics-2-tomcat
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-tomcat/"
       volumes:
+        - name: apim-analytics-2-h2-storage-volume
+          persistentVolumeClaim:
+            claimName: apim-analytics-h2-volume-claim
         - name: apim-analytics-2-bin
           configMap:
             name: apim-analytics-2-bin
