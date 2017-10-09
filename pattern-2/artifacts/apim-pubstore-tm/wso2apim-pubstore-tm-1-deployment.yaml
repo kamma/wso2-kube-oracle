@@ -69,7 +69,6 @@ spec:
         -
           name: apim-tm1-storage-volume
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
-          subPath: apim2
         - name: apim-pubstore-tm-1-bin
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
         - name: apim-pubstore-tm-1-conf
