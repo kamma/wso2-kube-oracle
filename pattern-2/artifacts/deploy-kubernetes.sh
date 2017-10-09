@@ -28,10 +28,10 @@ kubectl create serviceaccount wso2svcacct
 kubectl create -f volumes/persistent-volumes.yaml
 
 # Configuration Maps
-kubectl create configmap apim-analytics-single-bin --from-file=../confs/apim-analytics-single/bin/
-kubectl create configmap apim-analytics-single-conf --from-file=../confs/apim-analytics-single/repository/conf/
-kubectl create configmap apim-analytics-single-datasources --from-file=../confs/apim-analytics-single/repository/conf/datasources/
-kubectl create configmap apim-analytics-single-tomcat --from-file=../confs/apim-analytics-single/repository/conf/tomcat/
+#kubectl create configmap apim-analytics-single-bin --from-file=../confs/apim-analytics-single/bin/
+#kubectl create configmap apim-analytics-single-conf --from-file=../confs/apim-analytics-single/repository/conf/
+#kubectl create configmap apim-analytics-single-datasources --from-file=../confs/apim-analytics-single/repository/conf/datasources/
+#kubectl create configmap apim-analytics-single-tomcat --from-file=../confs/apim-analytics-single/repository/conf/tomcat/
 
 kubectl create configmap apim-analytics-1-bin --from-file=../confs/apim-analytics-1/bin/
 kubectl create configmap apim-analytics-1-conf --from-file=../confs/apim-analytics-1/repository/conf/
@@ -100,10 +100,10 @@ kubectl create -f apim-gateway/wso2apim-mgt-volume-claim.yaml
 sleep 30s
 # analytics
 echo 'deploying apim analytics ...'
-kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
-#kubectl create -f apim-analytics/wso2apim-analytics-1-deployment.yaml
-#sleep 10s
-#kubectl create -f apim-analytics/wso2apim-analytics-2-deployment.yaml
+#kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
+kubectl create -f apim-analytics/wso2apim-analytics-1-deployment.yaml
+sleep 10s
+kubectl create -f apim-analytics/wso2apim-analytics-2-deployment.yaml
 
 # apim
 sleep 1m
