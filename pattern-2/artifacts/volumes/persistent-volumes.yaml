@@ -64,23 +64,4 @@ spec:
   nfs:
     # FIXME: use the right IP
     server: 10.201.152.1
-    path: "/home/kamma/pattern-2/ama-solr"
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: local-pv-4
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
-spec:
-  capacity:
-    storage: 2Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.201.152.1
-    path: "/home/kamma/pattern-2/ama-tmp"
-
+    path: "/home/kamma/pattern-2/ama-h2"

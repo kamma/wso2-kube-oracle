@@ -72,10 +72,8 @@ spec:
           initialDelaySeconds: 300
           periodSeconds: 20
         volumeMounts:
-          - name: apim-analytics-single-solr-storage-volume
-            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/solr"
-          - name: apim-analytics-single-tmp-storage-volume
-            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/tmp"
+          - name: apim-analytics-single-h2-storage-volume
+            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/repository/database"
           - name: apim-analytics-single-bin
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/bin/"
           - name: apim-analytics-single-conf
@@ -85,12 +83,9 @@ spec:
           - name: apim-analytics-single-tomcat
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-tomcat/"
       volumes:
-        - name: apim-analytics-single-solr-storage-volume
+        - name: apim-analytics-single-h2-storage-volume
           persistentVolumeClaim:
-            claimName: apim-analytics-solr-volume-claim
-        - name: apim-analytics-single-tmp-storage-volume
-          persistentVolumeClaim:
-            claimName: apim-analytics-tmp-volume-claim
+            claimName: apim-analytics-h2-volume-claim
         - name: apim-analytics-single-bin
           configMap:
             name: apim-analytics-single-bin
