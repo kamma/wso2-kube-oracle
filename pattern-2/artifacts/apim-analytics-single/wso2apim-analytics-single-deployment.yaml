@@ -74,8 +74,10 @@ spec:
         volumeMounts:
           - name: apim-analytics-single-solr-storage-volume
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0/solr"
+            subPath: ama-solr
           - name: apim-analytics-single-tmp-storage-volume
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0/tmp"
+            subPath: ama-tmp
           - name: apim-analytics-single-bin
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/bin/"
           - name: apim-analytics-single-conf
