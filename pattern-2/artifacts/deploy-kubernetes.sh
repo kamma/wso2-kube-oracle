@@ -28,24 +28,24 @@ kubectl create serviceaccount wso2svcacct
 kubectl create -f volumes/persistent-volumes.yaml
 
 # Configuration Maps
-#kubectl create configmap apim-analytics-single-bin --from-file=../confs/apim-analytics-single/bin/
-#kubectl create configmap apim-analytics-single-conf --from-file=../confs/apim-analytics-single/repository/conf/
-#kubectl create configmap apim-analytics-single-datasources --from-file=../confs/apim-analytics-single/repository/conf/datasources/
-#kubectl create configmap apim-analytics-single-tomcat --from-file=../confs/apim-analytics-single/repository/conf/tomcat/
+kubectl create configmap apim-analytics-single-bin --from-file=../confs/apim-analytics-single/bin/
+kubectl create configmap apim-analytics-single-conf --from-file=../confs/apim-analytics-single/repository/conf/
+kubectl create configmap apim-analytics-single-datasources --from-file=../confs/apim-analytics-single/repository/conf/datasources/
+kubectl create configmap apim-analytics-single-tomcat --from-file=../confs/apim-analytics-single/repository/conf/tomcat/
 
-kubectl create configmap apim-analytics-1-bin --from-file=../confs/apim-analytics-1/bin/
-kubectl create configmap apim-analytics-1-conf --from-file=../confs/apim-analytics-1/repository/conf/
-kubectl create configmap apim-analytics-1-spark --from-file=../confs/apim-analytics-1/repository/conf/analytics/spark/
-kubectl create configmap apim-analytics-1-axis2 --from-file=../confs/apim-analytics-1/repository/conf/axis2/
-kubectl create configmap apim-analytics-1-datasources --from-file=../confs/apim-analytics-1/repository/conf/datasources/
-kubectl create configmap apim-analytics-1-tomcat --from-file=../confs/apim-analytics-1/repository/conf/tomcat/
+#kubectl create configmap apim-analytics-1-bin --from-file=../confs/apim-analytics-1/bin/
+#kubectl create configmap apim-analytics-1-conf --from-file=../confs/apim-analytics-1/repository/conf/
+#kubectl create configmap apim-analytics-1-spark --from-file=../confs/apim-analytics-1/repository/conf/analytics/spark/
+#kubectl create configmap apim-analytics-1-axis2 --from-file=../confs/apim-analytics-1/repository/conf/axis2/
+#kubectl create configmap apim-analytics-1-datasources --from-file=../confs/apim-analytics-1/repository/conf/datasources/
+#kubectl create configmap apim-analytics-1-tomcat --from-file=../confs/apim-analytics-1/repository/conf/tomcat/
 
-kubectl create configmap apim-analytics-2-bin --from-file=../confs/apim-analytics-2/bin/
-kubectl create configmap apim-analytics-2-conf --from-file=../confs/apim-analytics-2/repository/conf/
-kubectl create configmap apim-analytics-2-spark --from-file=../confs/apim-analytics-2/repository/conf/analytics/spark/
-kubectl create configmap apim-analytics-2-axis2 --from-file=../confs/apim-analytics-2/repository/conf/axis2/
-kubectl create configmap apim-analytics-2-datasources --from-file=../confs/apim-analytics-2/repository/conf/datasources/
-kubectl create configmap apim-analytics-2-tomcat --from-file=../confs/apim-analytics-2/repository/conf/tomcat/
+#kubectl create configmap apim-analytics-2-bin --from-file=../confs/apim-analytics-2/bin/
+#kubectl create configmap apim-analytics-2-conf --from-file=../confs/apim-analytics-2/repository/conf/
+#kubectl create configmap apim-analytics-2-spark --from-file=../confs/apim-analytics-2/repository/conf/analytics/spark/
+#kubectl create configmap apim-analytics-2-axis2 --from-file=../confs/apim-analytics-2/repository/conf/axis2/
+#kubectl create configmap apim-analytics-2-datasources --from-file=../confs/apim-analytics-2/repository/conf/datasources/
+#kubectl create configmap apim-analytics-2-tomcat --from-file=../confs/apim-analytics-2/repository/conf/tomcat/
 
 kubectl create configmap apim-gw-manager-worker-bin --from-file=../confs/apim-gw-manager-worker/bin/
 kubectl create configmap apim-gw-manager-worker-conf --from-file=../confs/apim-gw-manager-worker/repository/conf/
@@ -76,13 +76,12 @@ kubectl create configmap apim-pubstore-tm-2-datasources --from-file=../confs/api
 kubectl create configmap apim-pubstore-tm-2-tomcat --from-file=../confs/apim-pubstore-tm-2/repository/conf/tomcat/
 
 echo 'deploying services and volume claims ...'
-#kubectl create -f apim-analytics-single/wso2apim-analytics-service.yaml
-#kubectl create -f apim-analytics-single/wso2apim-analytics-single-service.yaml
-#kubectl create -f apim-analytics-single/wso2apim-analytics-h2-volume-claim.yaml
-kubectl create -f apim-analytics/wso2apim-analytics-h2-volume-claim.yaml
-kubectl create -f apim-analytics/wso2apim-analytics-service.yaml
-kubectl create -f apim-analytics/wso2apim-analytics-1-service.yaml
-kubectl create -f apim-analytics/wso2apim-analytics-2-service.yaml
+kubectl create -f apim-analytics-single/wso2apim-analytics-service.yaml
+kubectl create -f apim-analytics-single/wso2apim-analytics-single-service.yaml
+kubectl create -f apim-analytics-single/wso2apim-analytics-h2-volume-claim.yaml
+#kubectl create -f apim-analytics/wso2apim-analytics-service.yaml
+#kubectl create -f apim-analytics/wso2apim-analytics-1-service.yaml
+#kubectl create -f apim-analytics/wso2apim-analytics-2-service.yaml
 
 kubectl create -f apim-pubstore-tm/wso2apim-service.yaml
 kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-1-service.yaml
@@ -100,10 +99,10 @@ kubectl create -f apim-gateway/wso2apim-mgt-volume-claim.yaml
 sleep 30s
 # analytics
 echo 'deploying apim analytics ...'
-#kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
-kubectl create -f apim-analytics/wso2apim-analytics-1-deployment.yaml
-sleep 10s
-kubectl create -f apim-analytics/wso2apim-analytics-2-deployment.yaml
+kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
+#kubectl create -f apim-analytics/wso2apim-analytics-1-deployment.yaml
+#sleep 10s
+#kubectl create -f apim-analytics/wso2apim-analytics-2-deployment.yaml
 
 # apim
 sleep 1m

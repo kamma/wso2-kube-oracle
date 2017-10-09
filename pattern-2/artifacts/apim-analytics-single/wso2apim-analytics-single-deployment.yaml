@@ -15,10 +15,10 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: wso2apim-analytics-1
+  name: wso2apim-analytics-single
   labels:
     app: wso2apim-analytics
-    node: wso2apim-analytics-1
+    node: wso2apim-analytics-single
     pattern: wso2apim-pattern-2
 spec:
   strategy:
@@ -27,10 +27,10 @@ spec:
     metadata:
       labels:
         app: wso2apim-analytics
-        node: wso2apim-analytics-1
+        node: wso2apim-analytics-single
         pattern: wso2apim-pattern-2
     spec:
-      hostname: wso2apim-analytics-1
+      hostname: wso2apim-analytics-single
       containers:
       - image: 10.201.152.1:5000/wso2am-analytics-kubernetes:2.1.0
         name: wso2apim-analytics
@@ -72,35 +72,30 @@ spec:
           initialDelaySeconds: 300
           periodSeconds: 20
         volumeMounts:
-          - name: apim-analytics-1-bin
+          - name: apim-analytics-single-h2-storage-volume
+            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/repository/database/ama"
+          - name: apim-analytics-single-bin
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/bin/"
-          - name: apim-analytics-1-conf
+          - name: apim-analytics-single-conf
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf/"
-          - name: apim-analytics-1-spark
-            mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-analytics-spark/"
-          - name: apim-analytics-1-axis2
-            mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-axis2/"
-          - name: apim-analytics-1-datasources
+          - name: apim-analytics-single-datasources
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-datasources/"
-          - name: apim-analytics-1-tomcat
+          - name: apim-analytics-single-tomcat
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/conf-tomcat/"
       volumes:
-        - name: apim-analytics-1-bin
+        - name: apim-analytics-single-h2-storage-volume
+          persistentVolumeClaim:
+            claimName: apim-analytics-h2-volume-claim
+        - name: apim-analytics-single-bin
           configMap:
-            name: apim-analytics-1-bin
-        - name: apim-analytics-1-conf
+            name: apim-analytics-single-bin
+        - name: apim-analytics-single-conf
           configMap:
-            name: apim-analytics-1-conf
-        - name: apim-analytics-1-spark
+            name: apim-analytics-single-conf
+        - name: apim-analytics-single-datasources
           configMap:
-            name: apim-analytics-1-spark
-        - name: apim-analytics-1-axis2
+            name: apim-analytics-single-datasources
+        - name: apim-analytics-single-tomcat
           configMap:
-            name: apim-analytics-1-axis2
-        - name: apim-analytics-1-datasources
-          configMap:
-            name: apim-analytics-1-datasources
-        - name: apim-analytics-1-tomcat
-          configMap:
-            name: apim-analytics-1-tomcat
+            name: apim-analytics-single-tomcat
       serviceAccountName: "wso2svcacct"
