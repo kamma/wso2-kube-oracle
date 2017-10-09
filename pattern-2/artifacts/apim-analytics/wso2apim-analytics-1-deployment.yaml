@@ -73,7 +73,7 @@ spec:
           periodSeconds: 20
         volumeMounts:
           - name: apim-analytics-1-h2-storage-volume
-            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/repository/database"
+            mountPath: "/home/wso2user/wso2am-analytics-2.1.0/repository/database/ama"
           - name: apim-analytics-1-bin
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0-conf/bin/"
           - name: apim-analytics-1-conf
