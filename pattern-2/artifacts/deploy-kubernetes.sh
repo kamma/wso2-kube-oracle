@@ -78,6 +78,8 @@ kubectl create configmap apim-pubstore-tm-2-tomcat --from-file=../confs/apim-pub
 echo 'deploying services and volume claims ...'
 kubectl create -f apim-analytics-single/wso2apim-analytics-service.yaml
 kubectl create -f apim-analytics-single/wso2apim-analytics-single-service.yaml
+kubectl create -f apim-analytics-single/wso2apim-analytics-solr-volume-claim.yaml
+kubectl create -f apim-analytics-single/wso2apim-analytics-tmp-volume-claim.yaml
 #kubectl create -f apim-analytics/wso2apim-analytics-service.yaml
 #kubectl create -f apim-analytics/wso2apim-analytics-1-service.yaml
 #kubectl create -f apim-analytics/wso2apim-analytics-2-service.yaml
