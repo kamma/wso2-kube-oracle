@@ -14,7 +14,7 @@
             <definition type="RDBMS">
                 <configuration>
                     <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
-                    <username>wso2stats</username>
+                    <username>wso2ama1</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>80</maxActive>
@@ -22,6 +22,9 @@
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
+                    <initialSize>0</initialSize>
+                    <testWhileIdle>true</testWhileIdle>
+                    <minEvictableIdleTimeMillis>4000</minEvictableIdleTimeMillis>
                 </configuration>
             </definition>
         </datasource>
@@ -32,7 +35,7 @@
             <definition type="RDBMS">
                 <configuration>
                     <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
-                    <username>wso2stats</username>
+                    <username>wso2ama2</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>80</maxActive>
@@ -40,6 +43,9 @@
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
+                    <initialSize>0</initialSize>
+                    <testWhileIdle>true</testWhileIdle>
+                    <minEvictableIdleTimeMillis>4000</minEvictableIdleTimeMillis>
                 </configuration>
             </definition>
         </datasource>
