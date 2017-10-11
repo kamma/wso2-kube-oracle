@@ -1,0 +1,1 @@
+FOR /r %f IN (*.sh) DO dos2unix %f
