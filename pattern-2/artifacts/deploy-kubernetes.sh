@@ -96,7 +96,7 @@ kubectl create -f apim-km/wso2apim-km-service.yaml
 kubectl create -f apim-pubstore-tm/wso2apim-tm1-volume-claim.yaml
 kubectl create -f apim-gateway/wso2apim-mgt-volume-claim.yaml
 
-sleep 30s
+sleep 5s
 # analytics
 echo 'deploying apim analytics ...'
 kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
