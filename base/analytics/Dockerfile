@@ -43,7 +43,7 @@ RUN apt-get update \
            zip \
            unzip \
            telnet \
-           iproute2
+           iproute2 \
            sudo && rm -rf /var/lib/apt/lists/*
 
 # creates the user 
@@ -53,7 +53,7 @@ RUN useradd --system --uid ${USER_ID} --gid 0 --create-home --home-dir ${USER_HO
 # copy the jdk and product packs
 COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FILES}/${JDBC_DRIVER} \
         ${FILES}/${DNS_JAVA} ${FILES}/${KUBERNETES_MEMBERSHIP_SCHEME} ${FILES}/${CLIENT_TRUSTSTORE} \
-        ${FILES}/${WSO2CARBON_JKS} ${USER_HOME}/
+        ${FILES}/${WSO2CARBON_JKS} sudoers change_ownership.sh ${USER_HOME}/
 
 # and creates the init script
 RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
