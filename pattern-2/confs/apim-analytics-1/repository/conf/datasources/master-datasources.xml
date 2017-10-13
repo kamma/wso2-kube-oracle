@@ -36,7 +36,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url><JDBC_DATASOURCE></url>
+                    <url>jdbc:oracle:thin:@<JDBC_DATASOURCE></url>
                     <username>wso2um</username>
                     <password><JDBC_PASSWORD></password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
@@ -57,7 +57,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url><JDBC_DATASOURCE></url>
+                    <url>jdbc:oracle:thin:@<JDBC_DATASOURCE></url>
                     <username>wso2reg</username>
                     <password><JDBC_PASSWORD></password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>

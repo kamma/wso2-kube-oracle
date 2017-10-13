@@ -13,7 +13,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url><JDBC_DATASOURCE></url>
+                    <url>jdbc:oracle:thin:@<JDBC_DATASOURCE></url>
                     <username>wso2stats</username>
                     <password><JDBC_PASSWORD></password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
