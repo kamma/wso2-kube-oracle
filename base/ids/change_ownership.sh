@@ -25,3 +25,4 @@ echo "carbon server: ${WSO2_SERVER}-${WSO2_SERVER_VERSION}"
 
 /bin/chown -R ${USER} ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/
 /bin/chgrp -R root ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/
+/bin/chmod -R 777 ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server

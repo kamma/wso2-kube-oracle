@@ -8,3 +8,4 @@ Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/b
 
 #includedir /etc/sudoers.d
 ALL ALL=(root) NOPASSWD: /bin/change_ownership.sh
+
