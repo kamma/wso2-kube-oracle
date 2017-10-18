@@ -57,10 +57,6 @@ if [ -e ${carbon_home}-conf/conf ]
  then cp ${carbon_home}-conf/conf/* ${carbon_home}/repository/conf/
 fi
 
-if [ -e ${carbon_home}-conf/dropins ]
- then cp ${carbon_home}-conf/dropins/* ${carbon_home}/repository/components/dropins/
-fi
-
 if [ -e ${carbon_home}-conf/conf-axis2 ]
  then cp ${carbon_home}-conf/conf-axis2/* ${carbon_home}/repository/conf/axis2/
 fi
