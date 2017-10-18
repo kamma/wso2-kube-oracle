@@ -58,7 +58,7 @@ if [ -e ${carbon_home}-conf/conf ]
 fi
 
 if [ -e ${carbon_home}-conf/components ]
- then cp -R ${carbon_home}-conf/components/* ${carbon_home}/repository/components/
+ then cp ${carbon_home}-conf/components/* ${carbon_home}/repository/components/
 fi
 
 if [ -e ${carbon_home}-conf/conf-axis2 ]
