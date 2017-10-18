@@ -35,14 +35,14 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@<JDBC_DATASOURCE></url>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
                     <username>wso2am</username>
-                    <password><JDBC_PASSWORD></password>
+                    <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
-                    <validationQuery>SELECT 1</validationQuery>
+                    <validationQuery>SELECT 1 FROM DUAL</validationQuery>
                     <validationInterval>30000</validationInterval>
                 </configuration>
             </definition>
@@ -56,14 +56,14 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@<JDBC_DATASOURCE></url>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
                     <username>wso2um</username>
-                    <password><JDBC_PASSWORD></password>
+                    <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
-                    <validationQuery>SELECT 1</validationQuery>
+                    <validationQuery>SELECT 1 FROM DUAL</validationQuery>
                     <validationInterval>30000</validationInterval>
                 </configuration>
             </definition>
@@ -77,14 +77,14 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@<JDBC_DATASOURCE></url>
+                    <url>jdbc:oracle:thin:@10.201.152.1:49161/xe</url>
                     <username>wso2reg</username>
-                    <password><JDBC_PASSWORD></password>
+                    <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
                     <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
-                    <validationQuery>SELECT 1</validationQuery>
+                    <validationQuery>SELECT 1 FROM DUAL</validationQuery>
                     <validationInterval>30000</validationInterval>
                 </configuration>
             </definition>
