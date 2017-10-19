@@ -128,7 +128,7 @@
         <OAuth2UserInfoEPUrl>https://wso2pim-km.wso2.svc:9443/oauth2/userinfo</OAuth2UserInfoEPUrl>
         <OIDCCheckSessionEPUrl>https://wso2pim-km.wso2.svc:9443/oidc/checksession</OIDCCheckSessionEPUrl>
         <OIDCLogoutEPUrl>https://wso2pim-km.wso2.svc:9443/oidc/logout</OIDCLogoutEPUrl>
-        <OAuth2ConsentPage>https://wso2pim-km.wso2.svc:9443/authenticationendpoint/oauth2_authz.do</OAuth2ConsentPage>
+        <OAuth2ConsentPage>https://10.201.152.219:32029/authenticationendpoint/oauth2_authz.do</OAuth2ConsentPage>
         <OAuth2ErrorPage>https://wso2pim-km.wso2.svc:9443/authenticationendpoint/oauth2_error.do</OAuth2ErrorPage>
         <OIDCConsentPage>https://wso2pim-km.wso2.svc:9443/authenticationendpoint/oauth2_consent.do</OIDCConsentPage>
         <OIDCLogoutConsentPage>https://wso2pim-km.wso2.svc:9443/authenticationendpoint/oauth2_logout_consent.do</OIDCLogoutConsentPage>
