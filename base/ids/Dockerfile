@@ -35,6 +35,7 @@ ARG STARTUP_SCRIPT=init_carbon.sh
 ARG JDBC_DRIVER=ojdbc6-11*.jar
 ARG DNS_JAVA=dnsjava-2.1.8.jar
 ARG JACKSON=jackson-*.jar
+ARG LIBS=${FILES}/libs/*
 ARG PA_PLUGIN=cz.trask.identity.application.authenticator.powerauth-*.jar
 ARG KUBERNETES_MEMBERSHIP_SCHEME=kubernetes-membership-scheme-1.0.*.jar
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
@@ -51,11 +52,15 @@ RUN apt-get update \
 # creates the user
 RUN useradd --system --uid ${USER_ID} --gid 0 --create-home --home-dir ${USER_HOME} \
         --no-log-init ${USER}
+        
+RUN mkdir ${USER_HOME}/libs
 
 # copy the jdk and product packs
 COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FILES}/${JDBC_DRIVER} \
     ${FILES}/${DNS_JAVA} ${FILES}/${KUBERNETES_MEMBERSHIP_SCHEME} ${FILES}/${CLIENT_TRUSTSTORE} \
     ${FILES}/${WSO2CARBON_JKS} ${FILES}/${JACKSON} ${FILES}/${PA_PLUGIN} sudoers change_ownership.sh ${USER_HOME}/
+
+COPY ${LIBS} ${USER_HOME}/libs
 
 # and creates the init script
 RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
@@ -73,6 +78,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && cp ${USER_HOME}/${WSO2CARBON_JKS} \
             ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/ \
         && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
+        && cp ${USER_HOME}/libs/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/ \
         && rm ${USER_HOME}/${WSO2_SERVER_PACK} \
         && rm ${USER_HOME}/${JDK_ARCHIVE} \
         && rm ${USER_HOME}/${JDBC_DRIVER} \
@@ -82,6 +88,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm ${USER_HOME}/${PA_PLUGIN} \
         && rm ${USER_HOME}/${CLIENT_TRUSTSTORE} \
         && rm ${USER_HOME}/${WSO2CARBON_JKS} \
+        && rm ${USER_HOME}/libs \
         && mkdir -p ${USER_HOME}/scripts/ \
         && cat ${USER_HOME}/${STARTUP_SCRIPT} > ${USER_HOME}/scripts/${STARTUP_SCRIPT} \
         && rm ${USER_HOME}/${STARTUP_SCRIPT} \
