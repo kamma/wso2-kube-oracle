@@ -33,6 +33,7 @@ ARG JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
 ARG JAVA_HOME=${USER_HOME}/java
 ARG STARTUP_SCRIPT=init_carbon.sh
 ARG LIBS=${FILES}/libs/*
+ARG WEBAPPS=${FILES}/webapps/*
 ARG PA_PLUGIN=cz.trask.identity.application.authenticator.powerauth-*.jar
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
 ARG WSO2CARBON_JKS=wso2carbon.jks
@@ -50,12 +51,14 @@ RUN useradd --system --uid ${USER_ID} --gid 0 --create-home --home-dir ${USER_HO
         --no-log-init ${USER}
         
 RUN mkdir ${USER_HOME}/libs
+RUN mkdir ${USER_HOME}/webapps
 
 # copy the jdk and product packs
 COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FILES}/${CLIENT_TRUSTSTORE} \
     ${FILES}/${WSO2CARBON_JKS} ${FILES}/${PA_PLUGIN} sudoers change_ownership.sh ${USER_HOME}/
 
 COPY ${LIBS} ${USER_HOME}/libs/
+COPY ${WEBAPPS} ${USER_HOME}/webapps/
 
 # and creates the init script
 RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
@@ -70,12 +73,14 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
             ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/ \
         && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
         && cp ${USER_HOME}/libs/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/ \
+        && cp ${USER_HOME}/webapps/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps \
         && rm ${USER_HOME}/${WSO2_SERVER_PACK} \
         && rm ${USER_HOME}/${JDK_ARCHIVE} \
         && rm ${USER_HOME}/${PA_PLUGIN} \
         && rm ${USER_HOME}/${CLIENT_TRUSTSTORE} \
         && rm ${USER_HOME}/${WSO2CARBON_JKS} \
         && rm -rf ${USER_HOME}/libs \
+        && rm -rf ${USER_HOME}/webapps \
         && mkdir -p ${USER_HOME}/scripts/ \
         && cat ${USER_HOME}/${STARTUP_SCRIPT} > ${USER_HOME}/scripts/${STARTUP_SCRIPT} \
         && rm ${USER_HOME}/${STARTUP_SCRIPT} \
