@@ -33,10 +33,12 @@ ARG JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
 ARG JAVA_HOME=${USER_HOME}/java
 ARG STARTUP_SCRIPT=init_carbon.sh
 ARG LIBS=${FILES}/libs/*
+ARG PATCHES=${FILES}/patches/*
 ARG WEBAPPS=${FILES}/webapps/*
 ARG PA_PLUGIN=cz.trask.identity.application.authenticator.powerauth-*.jar
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
 ARG WSO2CARBON_JKS=wso2carbon.jks
+ARG TARGET_PATCH_DIR=patch001
 
 RUN apt-get update \
         && apt-get install -y --no-install-recommends --no-install-suggests \
@@ -52,6 +54,7 @@ RUN useradd --system --uid ${USER_ID} --gid 0 --create-home --home-dir ${USER_HO
         
 RUN mkdir ${USER_HOME}/libs
 RUN mkdir ${USER_HOME}/webapps
+RUN mkdir ${USER_HOME}/patches
 
 # copy the jdk and product packs
 COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FILES}/${CLIENT_TRUSTSTORE} \
@@ -59,6 +62,7 @@ COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FI
 
 COPY ${LIBS} ${USER_HOME}/libs/
 COPY ${WEBAPPS} ${USER_HOME}/webapps/
+COPY ${PATCHES} ${USER_HOME}/patches/
 
 # and creates the init script
 RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
@@ -73,6 +77,8 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
             ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/ \
         && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
         && cp ${USER_HOME}/libs/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/ \
+	&& mkdir -p ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/patches/${TARGET_PATCH_DIR} \
+        && cp -r ${USER_HOME}/patches/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/patches/${TARGET_PATCH_DIR} \
         && cp ${USER_HOME}/webapps/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps \
         && rm ${USER_HOME}/${WSO2_SERVER_PACK} \
         && rm ${USER_HOME}/${JDK_ARCHIVE} \
@@ -82,6 +88,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/authenticationendpoint \
         && rm -rf ${USER_HOME}/libs \
         && rm -rf ${USER_HOME}/webapps \
+        && rm -rf ${USER_HOME}/patches \
         && mkdir -p ${USER_HOME}/scripts/ \
         && cat ${USER_HOME}/${STARTUP_SCRIPT} > ${USER_HOME}/scripts/${STARTUP_SCRIPT} \
         && rm ${USER_HOME}/${STARTUP_SCRIPT} \
