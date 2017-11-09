@@ -163,7 +163,7 @@
 			<Parameter name="enableTOTP">false</Parameter>
 		</AuthenticatorConfig>
 
-		<AuthenticatorConfig name="PowerauthAuthenticator" enabled="true">
+		<!--AuthenticatorConfig name="PowerauthAuthenticator" enabled="true">
 			<Parameter name="AuthTokenEndpoint"
 				>http://kube-minion1.dev1.equabank.loc:32110/powerauth-webflow/oauth/token</Parameter>
 			<Parameter name="AuthnEndpoint"
@@ -173,6 +173,19 @@
 			<Parameter name="ClientId">democlient</Parameter>
 			<Parameter name="ClientSecret">changeme</Parameter>
 			<Parameter name="CallBackUrl">https://kube-minion1.dev1.equabank.loc:32029/</Parameter>
+			<Parameter name="Scope">profile</Parameter>
+		</AuthenticatorConfig-->
+
+		<AuthenticatorConfig name="PowerauthAuthenticator" enabled="true">
+			<Parameter name="AuthTokenEndpoint"
+				>http://10.21.4.1:8088/token</Parameter>
+			<Parameter name="AuthnEndpoint"
+				>http://10.21.4.1:8088/authorize</Parameter>
+			<Parameter name="UserInfoEndpoint"
+				>http://10.21.4.1:8088/profile</Parameter>
+			<Parameter name="ClientId">democlient</Parameter>
+			<Parameter name="ClientSecret">changeme</Parameter>
+			<Parameter name="CallBackUrl">https://10.21.4.81:32029/commonauth</Parameter>
 			<Parameter name="Scope">profile</Parameter>
 		</AuthenticatorConfig>
 
