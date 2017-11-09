@@ -86,6 +86,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm ${USER_HOME}/${CLIENT_TRUSTSTORE} \
         && rm ${USER_HOME}/${WSO2CARBON_JKS} \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/authenticationendpoint \
+        && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/oauth2 \
         && rm -rf ${USER_HOME}/libs \
         && rm -rf ${USER_HOME}/webapps \
         && rm -rf ${USER_HOME}/patches \
