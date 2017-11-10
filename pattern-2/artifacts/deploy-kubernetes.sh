@@ -97,33 +97,26 @@ kubectl create -f apim-pubstore-tm/wso2apim-tm1-volume-claim.yaml
 kubectl create -f apim-gateway/wso2apim-mgt-volume-claim.yaml
 kubectl create -f apim-km/wso2apim-km-volume-claim.yaml
 
-sleep 5s
-# analytics
-echo 'deploying apim analytics ...'
-kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
-#kubectl create -f apim-analytics/wso2apim-analytics-1-deployment.yaml
-#sleep 10s
-#kubectl create -f apim-analytics/wso2apim-analytics-2-deployment.yaml
-
-# apim
-sleep 1m
-echo 'deploying apim pubstore-tm-1 ...'
-kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-1-deployment.yaml
-
-sleep 1m
-echo 'deploying apim pubstore-tm-2 ...'
-kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-2-deployment.yaml
-
-sleep 30s
+# apim km
 echo 'deploying apim key manager...'
 kubectl create -f apim-km/wso2apim-km-node-deployment.yaml
 
+# analytics
 sleep 30s
+echo 'deploying apim analytics ...'
+kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
+
+# apim pubstore 1
+sleep 30m
+echo 'deploying apim pubstore-tm-1 ...'
+kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-1-deployment.yaml
+
+# apim pubstore 2
+sleep 30m
+echo 'deploying apim pubstore-tm-2 ...'
+kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-2-deployment.yaml
+
+# apim gw
+sleep 10s
 echo 'deploying apim manager-worker ...'
 kubectl create -f apim-gateway/wso2apim-manager-worker-deployment.yaml
-
-#echo 'deploying wso2apim and wso2apim-analytics ingresses ...'
-#kubectl create -f ingresses/nginx-default-http-backend.yaml
-#kubectl create -f ingresses/nginx-ingress-controller.yaml
-#kubectl create -f ingresses/wso2apim-analytics-ingress.yaml
-#kubectl create -f ingresses/wso2apim-ingress.yaml
