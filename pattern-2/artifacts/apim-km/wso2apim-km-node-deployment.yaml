@@ -91,7 +91,7 @@ spec:
       volumes:
       - name: apim-km-logs-volume
         persistentVolumeClaim:
-          claimName: apim-km-logs-volume-claim
+          claimName: wso2apim-km-volume-claim
       - name: apim-km-bin
         configMap:
           name: apim-km-bin
