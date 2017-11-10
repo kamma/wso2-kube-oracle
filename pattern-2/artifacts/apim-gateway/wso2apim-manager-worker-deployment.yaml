@@ -51,8 +51,9 @@ spec:
           protocol: "TCP"
 
         volumeMounts:
-        -
-          name: apim-mgt-storage-volume
+        - name: apim-mgt-logs-volume
+          mountPath: "/home/wso2user/wso2am-2.1.0/repository/logs"
+        - name: apim-mgt-storage-volume
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
         - name: apim-gw-manager-worker-bin
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
@@ -73,6 +74,9 @@ spec:
           periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
+      - name: apim-mgt-logs-volume
+        persistentVolumeClaim:
+          claimName: apim-mgt-logs-volume-claim
       - name: apim-mgt-storage-volume
         persistentVolumeClaim:
           claimName: apim-mgt-volume-claim
