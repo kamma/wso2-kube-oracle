@@ -68,6 +68,8 @@ spec:
           protocol: "TCP"
 
         volumeMounts:
+        - name: apim-km-logs-volume
+          mountPath: "/home/wso2user/wso2is-5.3.0/repository/logs"
         - name: apim-km-bin
           mountPath: "/home/wso2user/wso2is-5.3.0-conf/bin/"
         - name: apim-km-conf
@@ -87,6 +89,9 @@ spec:
           periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
+      - name: apim-km-logs-volume
+        persistentVolumeClaim:
+          claimName: apim-km-logs-volume-claim
       - name: apim-km-bin
         configMap:
           name: apim-km-bin

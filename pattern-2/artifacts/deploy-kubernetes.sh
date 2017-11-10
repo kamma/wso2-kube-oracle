@@ -95,6 +95,7 @@ kubectl create -f apim-km/wso2apim-km-service.yaml
 
 kubectl create -f apim-pubstore-tm/wso2apim-tm1-volume-claim.yaml
 kubectl create -f apim-gateway/wso2apim-mgt-volume-claim.yaml
+kubectl create -f apim-km/wso2apim-km-volume-claim.yaml
 
 sleep 5s
 # analytics

@@ -63,8 +63,9 @@ spec:
           protocol: "TCP"
 
         volumeMounts:
-        -
-          name: apim-tm2-storage-volume
+        - name: apim-tm2-logs-storage-volume
+          mountPath: "/home/wso2user/wso2am-2.1.0/repository/logs"
+        - name: apim-tm2-storage-volume
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
         - name: apim-pubstore-tm-2-bin
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
@@ -85,6 +86,9 @@ spec:
           periodSeconds: 20
       serviceAccountName: "wso2svcacct"
       volumes:
+      - name: apim-tm2-logs-storage-volume
+        persistentVolumeClaim:
+          claimName: apim-tm2-logs-volume-claim
       - name: apim-tm2-storage-volume
         persistentVolumeClaim:
           claimName: apim-tm1-volume-claim
