@@ -107,12 +107,12 @@ echo 'deploying apim analytics ...'
 kubectl create -f apim-analytics-single/wso2apim-analytics-single-deployment.yaml
 
 # apim pubstore 1
-sleep 30m
+sleep 30s
 echo 'deploying apim pubstore-tm-1 ...'
 kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-1-deployment.yaml
 
 # apim pubstore 2
-sleep 30m
+sleep 30s
 echo 'deploying apim pubstore-tm-2 ...'
 kubectl create -f apim-pubstore-tm/wso2apim-pubstore-tm-2-deployment.yaml
 
