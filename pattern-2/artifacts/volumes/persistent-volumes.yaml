@@ -82,4 +82,4 @@ spec:
   nfs:
     # FIXME: use the right IP
     server: 10.21.4.1
-    path: "/home/kamma/pattern-2/logs"
+    path: "/home/kamma/pattern-2/logs-ama"
