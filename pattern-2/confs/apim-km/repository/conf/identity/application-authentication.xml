@@ -185,7 +185,7 @@
 				>http://10.3.61.1:8088/profile</Parameter>
 			<Parameter name="ClientId">democlient</Parameter>
 			<Parameter name="ClientSecret">changeme</Parameter>
-			<Parameter name="CallBackUrl">https://10.21.4.81:32029/commonauth</Parameter>
+			<Parameter name="CallBackUrl">https://10.3.61.197:32029:32029/commonauth</Parameter>
 			<Parameter name="Scope">profile</Parameter>
 		</AuthenticatorConfig>
 
