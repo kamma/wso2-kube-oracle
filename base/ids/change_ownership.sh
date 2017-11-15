@@ -26,3 +26,12 @@ echo "carbon server: ${WSO2_SERVER}-${WSO2_SERVER_VERSION}"
 /bin/chown -R ${USER} ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/
 /bin/chgrp -R root ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/
 /bin/chmod -R 777 ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server
+
+echo 'going to change ownership of <IS_HOME>/repository/logs directory: '
+echo "user: ${USER}"
+echo "user home: ${USER_HOME}"
+echo "carbon server: ${WSO2_SERVER}-${WSO2_SERVER_VERSION}"
+
+/bin/chown -R ${USER} ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/logs
+/bin/chgrp -R root ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/logs
+/bin/chmod -R 777 ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/logs
