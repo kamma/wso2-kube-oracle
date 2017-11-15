@@ -16,6 +16,9 @@
 # limitations under the License
 # ------------------------------------------------------------------------
 
+# volumes
+kubectl create -f volumes/persistent-volumes.yaml
+
 kubectl create namespace wso2
 
 # set namespace
@@ -23,9 +26,6 @@ kubectl config set-context $(kubectl config current-context) --namespace=wso2
 
 echo '-- creating service account ...'
 kubectl create serviceaccount wso2svcacct
-
-# volumes
-kubectl create -f volumes/persistent-volumes.yaml
 
 # Configuration Maps
 kubectl create configmap apim-analytics-single-bin --from-file=../confs/apim-analytics-single/bin/

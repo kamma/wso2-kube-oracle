@@ -12,128 +12,100 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-1
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: psd2-wso2-1-pv 
 spec:
   capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/apim1"
+    storage: 3Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: psd2-wso2-1 
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
 ---
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-2
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: psd2-wso2-2-pv 
 spec:
   capacity:
-    storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/apim2"
+    storage: 3Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: psd2-wso2-2 
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain 
 ---
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-3
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: psd2-wso2-3-pv 
 spec:
   capacity:
-    storage: 3Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/ama-h2"
+    storage: 3Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: psd2-wso2-3 
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain 
 ---
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-4
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: apim-1-pv 
 spec:
   capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/logs-ama"
+    storage: 5Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: apim-1
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain 
 ---
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-5
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: apim-2-pv 
 spec:
   capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/logs-gw"
+    storage: 5Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: apim-2
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain 
 ---
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-6
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: apim-3-pv 
 spec:
   capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/logs-km"
+    storage: 5Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: apim-3
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain 
 ---
-apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: local-pv-7
-  labels:
-    type: local
-    pattern: wso2apim-pattern-2
+  name: apim-4-pv 
 spec:
   capacity:
-    storage: 10Gi
-  accessModes:
-    - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Recycle
-  nfs:
-    # FIXME: use the right IP
-    server: 10.3.61.1
-    path: "/home/kamma/pattern-2/logs-ps"
+    storage: 5Gi 
+  accessModes: 
+    - ReadWriteMany
+  glusterfs: 
+    endpoints: glusterfs-cluster 
+    path: apim-4
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain 
