@@ -24,6 +24,9 @@ kubectl config set-context $(kubectl config current-context) --namespace=wso2
 echo '-- creating service account ...'
 kubectl create serviceaccount wso2svcacct
 
+kubectl create -f glusterFS/glusterFS_ep.yaml
+kubectl create -f glusterFS/glusterFS-services.yaml
+
 # volumes
 kubectl create -f volumes/persistent-volumes.yaml
 
