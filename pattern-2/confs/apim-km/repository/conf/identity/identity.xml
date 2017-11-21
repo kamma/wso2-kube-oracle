@@ -510,4 +510,7 @@
     </TenantContextsToRewrite>
     <!-- Server Synchronization Tolerance Configuration in seconds -->
     <ClockSkew>300</ClockSkew>
+
+    <ConsentEngineEndpoint>http://{url}:{port}/{consent_engine}/v1/consents/</ConsentEngineEndpoint>
+    <SkipConsentEngine>true</SkipConsentEngine>
 </Server>
