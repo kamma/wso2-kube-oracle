@@ -34,7 +34,7 @@
 #ulimit -n 100000
 
 # NOTE: This is an edited wso2server.sh script to facilitate spark environment variables for WSO2DAS
-
+#
 cygwin=false;
 darwin=false;
 os400=false;

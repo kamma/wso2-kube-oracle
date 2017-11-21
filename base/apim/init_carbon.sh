@@ -28,8 +28,11 @@ sudo /bin/change_ownership.sh
 # Dockerfile. This is to preserve the initial artifacts in a volume mount (the mounted directory can be empty initially). 
 # The artifacts will be copied to the CARBON_HOME/repository/deployment/server location before the server is started.
 if [[ -d ${HOME}/tmp/server/ ]]; then
-   echo "copying artifacts from ${HOME}/tmp/server/ to ${server_artifact_location}/ .."
-   cp -rf ${HOME}/tmp/server/* ${server_artifact_location}/
+   if [[ ! "$(ls -A ${server_artifact_location}/)" ]]; then
+      # There are no artifacts under CARBON_HOME/repository/deployment/server/; copy them.
+      echo "copying artifacts from ${HOME}/tmp/server/ to ${server_artifact_location}/ .."
+      cp -rf ${HOME}/tmp/server/* ${server_artifact_location}/
+   fi
    rm -rf ${HOME}/tmp/server/
 fi
 

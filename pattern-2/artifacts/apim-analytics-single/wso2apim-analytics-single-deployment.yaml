@@ -69,8 +69,8 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 7712
-          initialDelaySeconds: 300
-          periodSeconds: 20
+          initialDelaySeconds: 500
+          periodSeconds: 40
         volumeMounts:
           - name: apim-analytics-single-logs-storage-volume
             mountPath: "/home/wso2user/wso2am-analytics-2.1.0/repository/logs"

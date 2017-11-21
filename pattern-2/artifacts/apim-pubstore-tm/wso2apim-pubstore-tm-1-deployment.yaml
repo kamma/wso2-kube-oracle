@@ -85,8 +85,8 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 9443
-          initialDelaySeconds: 300
-          periodSeconds: 20
+          initialDelaySeconds: 500
+          periodSeconds: 40
       serviceAccountName: "wso2svcacct"
       volumes:
       - name: apim-logs-storage-volume
