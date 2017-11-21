@@ -29,7 +29,7 @@ sudo /bin/change_ownership.sh
 # The artifacts will be copied to the CARBON_HOME/repository/deployment/server location before the server is started.
 if [[ -d ${HOME}/tmp/server/webapps/ ]]; then
    echo "copying artifacts from ${HOME}/tmp/server/webapps to ${server_artifact_location}/webapps .."
-   rm -rf ${server_artifact_location}/webapps/
+   rm -rf ${server_artifact_location}/webapps/*
    cp -rf ${HOME}/tmp/server/webapps/* ${server_artifact_location}/webapps/
    rm -rf ${HOME}/tmp/server/webapps/
 fi
