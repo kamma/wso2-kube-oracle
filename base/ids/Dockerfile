@@ -75,11 +75,11 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
             ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/ \
         && cp ${USER_HOME}/${WSO2CARBON_JKS} \
             ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/ \
-        && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
         && cp ${USER_HOME}/libs/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/ \
 	&& mkdir -p ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/patches/${TARGET_PATCH_DIR} \
         && cp -r ${USER_HOME}/patches/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/patches/${TARGET_PATCH_DIR} \
         && cp ${USER_HOME}/webapps/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps \
+        && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
         && rm ${USER_HOME}/${WSO2_SERVER_PACK} \
         && rm ${USER_HOME}/${JDK_ARCHIVE} \
         && rm ${USER_HOME}/${PA_PLUGIN} \
