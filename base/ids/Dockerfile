@@ -89,7 +89,6 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm -rf ${USER_HOME}/libs \
         && rm -rf ${USER_HOME}/webapps \
         && rm -rf ${USER_HOME}/patches \
-        && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
         && mkdir -p ${USER_HOME}/scripts/ \
         && cat ${USER_HOME}/${STARTUP_SCRIPT} > ${USER_HOME}/scripts/${STARTUP_SCRIPT} \
         && rm ${USER_HOME}/${STARTUP_SCRIPT} \
