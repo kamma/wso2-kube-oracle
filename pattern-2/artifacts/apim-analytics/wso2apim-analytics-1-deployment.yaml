@@ -32,7 +32,7 @@ spec:
     spec:
       hostname: wso2apim-analytics-1
       containers:
-      - image: 10.92.199.1:5000/wso2am-analytics-kubernetes:2.1.0
+      - image: 10.64.147.1:5000/wso2am-analytics-kubernetes:2.1.0
         name: wso2apim-analytics
         imagePullPolicy: Always
         ports:
