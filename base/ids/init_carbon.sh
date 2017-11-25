@@ -104,4 +104,11 @@ if [[ ! -z ${local_docker_ip} ]]; then
 fi
 
 # Start the carbon server.
-${carbon_home}/bin/wso2server.sh
+if [ -f ${HOME}/firstrun ] then
+	echo "First run. Creating DB."
+	rm ${HOME}/firstrun
+	${carbon_home}/bin/wso2server.sh -Dsetup
+else
+	echo "Standard run."
+	${carbon_home}/bin/wso2server.sh
+fi
