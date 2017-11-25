@@ -4,14 +4,6 @@
 
 set -e
 
-first_run="false"
-
-if [ "$1" = "true" ]; then
-  first_run="true"
-else
-  first_run="false"
-fi
-
 this_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 analytics_dir=$(cd "${this_dir}/analytics"; pwd)
 apim_dir=$(cd "${this_dir}/apim"; pwd)
@@ -23,10 +15,10 @@ function docker_build() {
     docker_api_version=`docker version | grep -m2 "API version" | tail -n1 | cut -d' ' -f5 | bc -l`
     echo "Building Docker image ${tag}..."
     if (( $(echo ${docker_api_version} '>=' 1.25 | bc -l) )); then
-        docker build -t ${tag} ${path} --build-arg first_run=$(first_run) --squash
+        docker build -t ${tag} ${path} --squash
     else
         echo "Docker API version is ${docker_api_version}, ignoring --squash option"
-        docker build -t ${tag} --build-arg first_run=$(first_run) ${path}
+        docker build -t ${tag} ${path}
     fi
 }
 

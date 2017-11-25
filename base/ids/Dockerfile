@@ -39,7 +39,6 @@ ARG PA_PLUGIN=cz.trask.identity.application.authenticator.powerauth-*.jar
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
 ARG WSO2CARBON_JKS=wso2carbon.jks
 ARG TARGET_PATCH_DIR=patch001
-ARG first_run
 
 RUN apt-get update \
         && apt-get install -y --no-install-recommends --no-install-suggests \
@@ -102,7 +101,6 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && chmod -R g=u ${USER_HOME} \
         && chown -R ${USER_ID} ${USER_HOME} \
         && chmod -R 0774 ${USER_HOME} \
-        && if [ ${first_run}="true" ]; then touch ${USER_HOME}/firstrun else echo "firstrun is not set"; fi
 
 # set the user, work directory and home
 USER ${USER_ID}
