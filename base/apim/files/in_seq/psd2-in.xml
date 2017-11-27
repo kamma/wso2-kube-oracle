@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="psd2-in">
+  
+  <property name="REST_URL_POSTFIX" value="" scope="axis2"/>
+  <property name="ContentType" value="application/json" scope="axis2"/>
+
+  <header name="SSL_CLIENT_CERT" scope="transport" expression="$trp:X-Client-Cert"/>            
+      
+  <call blocking="true">
+    <endpoint> 
+      <http uri-template="http://kube-minion1.dev1.equabank.loc:32089/psd2/webapi/tppRegistry/v1/tpps" method="post" />
+    </endpoint> 
+  </call> 
+  
+  <!--property name="uri.var.country" expression="json-eval($.???)"/-->
+  
+  <property name="requestTime" expression="get-property('SYSTEM_TIME')" type="LONG"/>
+
+  <!-- Generate operation ID -->
+  <class name="cz.trask.wso2.mediators.OperationIdMediator">
+      <property name="prefix" value="TST"/>
+  </class>
+  
+  <property name="operationId" expression="get-property('OperationIdMediatorResult')" />
+
+  <!-- Pass all the necessary headers -->
+  <header name="X-Operation-ID" expression="get-property('operationId')" action="set" scope="transport"/>
+  <header name="X-Client-Cert" expression="$trp:X-Client-Cert'" action="set" scope="transport" />
+  
+  <property name="requestMessage" expression="json-eval($.)"/>
+  
+  <property name="jwt" expression="get-property('transport','X-JWT-Assertion')"></property>
+  
+  <!-- Parse JWT -->
+  <filter source="boolean(get-property('jwt'))" regex="true">
+    <then>
+      <script language="js">
+        function decodeClaim(claimsJson, claimName) {
+            var temp = claimsJson.split(claimName + '\":\"');
+            var decoded = new Array();
+
+            if (temp !== null &amp;&amp; temp.length > 1) {
+              decoded = temp[1].split("\"");
+              
+              if (decoded.length > 0) {
+                return decoded[0];
+              }
+            }
+            
+            return null;
+        }
+        
+        try {
+          var jwt = mc.getProperty('jwt').trim();
+          var tokens = new Array();
+          
+          tokens = jwt.split("\\.");
+          
+          var claims = tokens[1];
+          var claimsJson = Packages.java.lang.String(Packages.org.apache.axiom.om.util.Base64.decode(claims), "UTF-8");
+          
+          claimsJson = claimsJson.replace("\\", "");
+          
+          var applicationname = decodeClaim(claimsJson, 'http://wso2.org/claims/applicationname');
+          var enduser = decodeClaim(claimsJson, 'http://wso2.org/claims/enduser');
+          var subscriber = decodeClaim(claimsJson, 'http://wso2.org/claims/subscriber');
+          var applicationid = decodeClaim(claimsJson, 'http://wso2.org/claims/applicationid');
+          var usertype = decodeClaim(claimsJson, 'http://wso2.org/claims/usertype');
+          var apicontext = decodeClaim(claimsJson, 'http://wso2.org/claims/apicontext');
+          
+          mc.setProperty("applicationname", applicationname);
+          mc.setProperty("enduser", enduser);
+          mc.setProperty("subscriber", subscriber);
+          mc.setProperty("applicationid", applicationid);
+          mc.setProperty("usertype", usertype);
+          mc.setProperty("apicontext", apicontext);
+        }
+        catch(err) {
+          mc.setProperty("err", err.message);
+        }
+      </script>
+      
+      <filter source="boolean(get-property('err'))" regex="true">
+        <then>
+          <log level="custom">
+            <property name="err" expression="get-property('err')" />
+          </log>
+        </then> 
+      </filter>
+    </then>
+  </filter>
+  
+  <!--filter source="get-property('OUT_ONLY')" regex="true">
+    <then-->
+    <log level="custom">
+        <!--property name="[JWT]" value="=====================================================" />
+        <property name="applicationname" expression="get-property('applicationname')" />    
+        <property name="enduser" expression="get-property('enduser')" />    
+        <property name="subscriber" expression="get-property('subscriber')" />    
+        <property name="applicationid" expression="get-property('applicationid')" />    
+        <property name="usertype" expression="get-property('usertype')" />    
+        <property name="apicontext" expression="get-property('apicontext')" />    
+        <property name="[JWT]" value="=====================================================" /-->
+    
+        <property name="DIRECTION" value="REQUEST" />
+        <property name="TIMESTAMP" expression="get-property('SYSTEM_DATE', 'yyyy-MM-dd HH:mm:ss,SSS Z')" />
+        <property name="OPERATION_ID" expression="get-property('operationId')" />
+        <property name="API" expression="get-property('apicontext')" />    
+        <property name="AUID" expression="get-property('AUID')" />
+        <property name="TPPID" expression="get-property('subscriber')" />  
+        <property name="CLIENTID" expression="get-property('applicationid')" />    
+        <property name="USERDOMAIN" expression="get-property('usertype')" />    
+        <property name="PATH" expression="get-property('To')" />    
+        <property name="SEVERITY" expression="get-property('SEVERITY')" />    
+        <property name="RC" expression="get-property('RC')" />
+        <property name="MSG" expression="get-property('requestMessage')" />   
+        <property name="ROLE" expression="get-property('ROLE')" />
+        <property name="CERTIFICATE" expression="get-property('transport', 'X-Client-Cert')" />
+        <property name="SYS_ID" expression="get-property('SYS_ID')" />
+        <property name="REGISTRATIONID" expression="get-property('REGISTRATIONID')" />
+        <property name="REGISTRATOR" expression="get-property('REGISTRATOR')" />
+        <property name="AUTHORIZATION" expression="get-property('AUTHORIZATION')" />
+        <property name="METHOD" expression="get-property('METHOD')" />
+    </log>
+    <!--/then>
+  </filter-->
+  
+</sequence>
+

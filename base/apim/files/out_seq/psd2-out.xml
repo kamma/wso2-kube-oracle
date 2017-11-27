@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="psd2-out">
+
+  <property name="responseTime" expression="get-property('SYSTEM_TIME')" type="LONG"/>
+  <property name="responseMessage" expression="json-eval($.)"/>
+  
+  <script language="js">
+   var time1 = mc.getProperty("requestTime");
+   var time2 = mc.getProperty("responseTime");
+   var timeTaken = Math.round(time2 - time1);
+   mc.setProperty("duration", timeTaken);
+  </script>
+  
+  <log level="custom">
+    <property name="DIRECTION" value="RESPONSE" />
+    <property name="TIMESTAMP" expression="get-property('SYSTEM_DATE', 'yyyy-MM-dd HH:mm:ss,SSS Z')" />
+    <property name="OPERATION_ID" expression="get-property('operationId')" />    
+    <property name="API" expression="get-property('apicontext')" />    
+    <property name="AUID" expression="get-property('AUID')" />
+    <property name="TPPID" expression="get-property('subscriber')" />  
+    <property name="CLIENTID" expression="get-property('applicationid')" />    
+    <property name="USERDOMAIN" expression="get-property('usertype')" />    
+    <property name="PATH" expression="get-property('REST_FULL_REQUEST_PATH')" />
+    <property name="SEVERITY" expression="get-property('SEVERITY')" />    
+    <property name="RC" expression="get-property('RC')" />
+    <property name="MSG" expression="get-property('RES')" />
+    <property name="ROLE" expression="get-property('ROLE')" />
+    <property name="SYS_ID" expression="get-property('SYS_ID')" />
+    <property name="REGISTRATOR" expression="get-property('REGISTRATOR')" />
+    <property name="ERROR_CODE" expression="get-property('ERROR_CODE')" />
+    <property name="ERROR_MESSAGE" expression="get-property('ERROR_MESSAGE')" />
+    <property name="ERROR_DETAIL" expression="get-property('ERROR_DETAIL')" />
+    <property name="ERROR_EXCEPTION" expression="get-property('ERROR_EXCEPTION')" />        
+    <property name="DURATION" expression="get-property('duration')" />        
+  </log>
+  
+</sequence>
