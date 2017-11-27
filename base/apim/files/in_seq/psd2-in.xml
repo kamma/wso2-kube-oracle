@@ -3,16 +3,17 @@
   
   <property name="REST_URL_POSTFIX" value="" scope="axis2"/>
   <property name="ContentType" value="application/json" scope="axis2"/>
+  <property name="scope" value="AISP"/>
 
   <header name="SSL_CLIENT_CERT" scope="transport" expression="$trp:X-Client-Cert"/>            
       
   <call blocking="true">
     <endpoint> 
-      <http uri-template="http://kube-minion1.dev1.equabank.loc:32089/psd2/webapi/tppRegistry/v1/tpps" method="post" />
+      <http uri-template="http://kube-minion1.dev1.equabank.loc:32089/psd2/webapi/tppRegistry/v1/tpps?{scope}" method="head" />
     </endpoint> 
   </call> 
   
-  <!--property name="uri.var.country" expression="json-eval($.???)"/-->
+  <!--property name="uri.var.country" expression="$trp:output1"/-->
   
   <property name="requestTime" expression="get-property('SYSTEM_TIME')" type="LONG"/>
 
