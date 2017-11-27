@@ -35,6 +35,7 @@ ARG STARTUP_SCRIPT=init_carbon.sh
 ARG LIBS=${FILES}/libs/*
 ARG IN_SEQ=${FILES}/in_seq/*
 ARG OUT_SEQ=${FILES}/out_seq/*
+ARG WEBAPPS=${FILES}/webapps/*
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
 ARG WSO2CARBON_JKS=wso2carbon.jks
 
@@ -53,12 +54,15 @@ RUN useradd --system --uid ${USER_ID} --gid 0 --create-home --home-dir ${USER_HO
 RUN mkdir ${USER_HOME}/libs
 RUN mkdir ${USER_HOME}/in_seq
 RUN mkdir ${USER_HOME}/out_seq
+RUN mkdir ${USER_HOME}/webapps
+
 # copy the jdk and product packs
 COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FILES}/${CLIENT_TRUSTSTORE} \
     ${FILES}/${WSO2CARBON_JKS} sudoers change_ownership.sh ${USER_HOME}/
 COPY ${LIBS} ${USER_HOME}/libs/
 COPY ${IN_SEQ} ${USER_HOME}/in_seq/
 COPY ${OUT_SEQ} ${USER_HOME}/out_seq/
+COPY ${PATCHES} ${USER_HOME}/webapps/
 
 # and creates the init script
 RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
@@ -73,6 +77,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && cp ${USER_HOME}/libs/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/ \
         && cp ${USER_HOME}/in_seq/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/customsequences/in/ \
         && cp ${USER_HOME}/out_seq/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/customsequences/out/ \
+        && cp ${USER_HOME}/webapps/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps \
         && rm ${USER_HOME}/${WSO2_SERVER_PACK} \
         && rm ${USER_HOME}/${JDK_ARCHIVE} \
         && rm ${USER_HOME}/${CLIENT_TRUSTSTORE} \
@@ -80,6 +85,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm -rf ${USER_HOME}/libs \
         && rm -rf ${USER_HOME}/in_seq \
         && rm -rf ${USER_HOME}/out_seq \
+        && rm -rf ${USER_HOME}/webapps \
 	&& mkdir -p ${USER_HOME}/scripts/ \
 	&& cat ${USER_HOME}/${STARTUP_SCRIPT} > ${USER_HOME}/scripts/${STARTUP_SCRIPT} \
 	&& rm ${USER_HOME}/${STARTUP_SCRIPT} \
