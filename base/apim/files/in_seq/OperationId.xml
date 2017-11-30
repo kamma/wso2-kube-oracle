@@ -1,0 +1,14 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="OperationId">
+        <!-- retrieve operation id -->
+    <class name="cz.trask.wso2.mediators.OperationIdMediator">
+        <property name="prefix" value="TST"/>
+    </class>
+    
+    <header name="X-Operation-ID" expression="get-property('OperationIdMediatorResult')" action="set" scope="transport"/>
+
+    <log level="custom">
+        <property name="Sequence" value="OperationId_0_1"/>
+        <property name="X-Operation-ID" expression="get-property('transport', 'X-Operation-ID')"/>
+    </log>
+
+</sequence>
