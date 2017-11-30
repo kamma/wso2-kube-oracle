@@ -29,11 +29,11 @@ sudo /bin/change_ownership.sh
 # The artifacts will be copied to the CARBON_HOME/repository/deployment/server location before the server is started.
 if [[ -d ${HOME}/tmp/server/ ]]; then
    echo "deleting unused artifacts"
-   rm -rf ${HOME}/tmp/server/webapps/am#sample#calculator#v1
-   rm -rf ${HOME}/tmp/server/webapps/am#sample#calculator#v1.war
-   rm -rf ${HOME}/tmp/server/webapps/am#sample#pizzashack#v1
-   rm -rf ${HOME}/tmp/server/webapps/am#sample#pizzashack#v1.war
-   rm -rf ${HOME}/tmp/server/jaggeryapps/publisher
+   rm -rf ${server_artifact_location}/webapps/am#sample#calculator#v1
+   rm -rf ${server_artifact_location}/webapps/am#sample#calculator#v1.war
+   rm -rf ${server_artifact_location}/webapps/am#sample#pizzashack#v1
+   rm -rf ${server_artifact_location}/webapps/am#sample#pizzashack#v1.war
+   rm -rf ${server_artifact_location}/jaggeryapps/publisher
 fi
 
 if [[ -d ${HOME}/tmp/server/ ]]; then
