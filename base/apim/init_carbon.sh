@@ -27,10 +27,10 @@ sudo /bin/change_ownership.sh
 # Copy the backed up artifacts from ${HOME}/tmp/server/. Copying the initial artifacts to ${HOME}/tmp/server/ is done in the 
 # Dockerfile. This is to preserve the initial artifacts in a volume mount (the mounted directory can be empty initially). 
 # The artifacts will be copied to the CARBON_HOME/repository/deployment/server location before the server is started.
-if [[ -d ${HOME}/tmp/server/synapse-configs ]]; then
-   echo "copying artifacts from ${HOME}/tmp/server/synapse-configs to ${server_artifact_location}/ .."
-   cp -nrf ${HOME}/tmp/server/synapse-configs/* ${server_artifact_location}/
-   rm -rf ${HOME}/tmp/server/synapse-configs
+if [[ -d ${HOME}/tmp/synapse-configs ]]; then
+   echo "copying artifacts from ${HOME}/tmp/synapse-configs to ${server_artifact_location}/ .."
+   cp -nrf ${HOME}/tmp/synapse-configs/* ${server_artifact_location}/
+   rm -rf ${HOME}/tmp/synapse-configs
 fi
 
 # Copy customizations done by user do the CARBON_HOME location. 
