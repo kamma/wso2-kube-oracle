@@ -27,11 +27,11 @@ sudo /bin/change_ownership.sh
 # Copy the backed up artifacts from ${HOME}/tmp/server/. Copying the initial artifacts to ${HOME}/tmp/server/ is done in the 
 # Dockerfile. This is to preserve the initial artifacts in a volume mount (the mounted directory can be empty initially). 
 # Copy customizations done by user do the CARBON_HOME location. 
-if [[ -d ${HOME}/tmp/carbon/ ]]; then
-   echo "copying custom configurations and artifacts from ${HOME}/tmp/carbon/ to ${carbon_home}/ .."
-   cp -rf ${HOME}/tmp/carbon/* ${carbon_home}/
-   rm -rf ${HOME}/tmp/carbon/
-fi
+#if [[ -d ${HOME}/tmp/carbon/ ]]; then
+#   echo "copying custom configurations and artifacts from ${HOME}/tmp/carbon/ to ${carbon_home}/ .."
+#   cp -rf ${HOME}/tmp/carbon/* ${carbon_home}/
+#   rm -rf ${HOME}/tmp/carbon/
+#fi
 
 # Copy ConfigMaps
 # Mount any ConfigMap to ${carbon_home}-conf location

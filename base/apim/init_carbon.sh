@@ -18,7 +18,7 @@
 
 set -e
 carbon_home=${HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}
-server_artifact_location=${carbon_home}/repository/deployment/server
+server_artifact_location=${carbon_home}/repository/deployment/server/synapse-configs
 
 # change the user of repository/deployment/server to wso2user. 
 # this is done to avoid permission issues arising with volume mounts 
@@ -27,19 +27,10 @@ sudo /bin/change_ownership.sh
 # Copy the backed up artifacts from ${HOME}/tmp/server/. Copying the initial artifacts to ${HOME}/tmp/server/ is done in the 
 # Dockerfile. This is to preserve the initial artifacts in a volume mount (the mounted directory can be empty initially). 
 # The artifacts will be copied to the CARBON_HOME/repository/deployment/server location before the server is started.
-if [[ -d ${HOME}/tmp/server/ ]]; then
-   echo "deleting unused artifacts"
-   rm -rf ${server_artifact_location}/webapps/am#sample#calculator#v1
-   rm -rf ${server_artifact_location}/webapps/am#sample#calculator#v1.war
-   rm -rf ${server_artifact_location}/webapps/am#sample#pizzashack#v1
-   rm -rf ${server_artifact_location}/webapps/am#sample#pizzashack#v1.war
-   rm -rf ${server_artifact_location}/jaggeryapps/publisher
-fi
-
-if [[ -d ${HOME}/tmp/server/ ]]; then
-   echo "copying artifacts from ${HOME}/tmp/server/ to ${server_artifact_location}/ .."
-   cp -nrf ${HOME}/tmp/server/* ${server_artifact_location}/
-   rm -rf ${HOME}/tmp/server/
+if [[ -d ${HOME}/tmp/server/synapse-configs ]]; then
+   echo "copying artifacts from ${HOME}/tmp/server/synapse-configs to ${server_artifact_location}/ .."
+   cp -nrf ${HOME}/tmp/server/synapse-configs/* ${server_artifact_location}/
+   rm -rf ${HOME}/tmp/server/synapse-configs
 fi
 
 # Copy customizations done by user do the CARBON_HOME location. 
