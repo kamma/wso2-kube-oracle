@@ -68,8 +68,6 @@ spec:
         volumeMounts:
         - name: apim-logs-storage-volume
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/logs"
-        - name: apim-tm1-storage-volume
-          mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
         - name: apim-pubstore-tm-1-bin
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
         - name: apim-pubstore-tm-1-conf
@@ -92,9 +90,6 @@ spec:
       - name: apim-logs-storage-volume
         persistentVolumeClaim:
           claimName: apim-logs-volume-claim
-      - name: apim-tm1-storage-volume
-        persistentVolumeClaim:
-          claimName: apim-tm1-volume-claim
       - name: apim-pubstore-tm-1-bin
         configMap:
           name: apim-pubstore-tm-1-bin
