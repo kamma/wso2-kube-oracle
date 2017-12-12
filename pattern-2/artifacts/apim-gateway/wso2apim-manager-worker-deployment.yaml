@@ -49,6 +49,12 @@ spec:
         -
           containerPort: 9443
           protocol: "TCP"
+        -
+          containerPort: 11111
+          protocol: "TCP"
+        -
+          containerPort: 9999
+          protocol: "TCP"
 
         volumeMounts:
         - name: apim-mgt-logs-volume
