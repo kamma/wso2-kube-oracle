@@ -315,7 +315,7 @@ do
     -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
     -Dorg.wso2.ignoreHostnameVerification=true \
     -DworkerNode=false \
-    -Djava.rmi.server.hostname=10.76.215.206
+    -Djava.rmi.server.hostname=10.76.215.206 \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done
