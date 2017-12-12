@@ -56,6 +56,7 @@ kubectl create configmap apim-gw-manager-worker-identity --from-file=../confs/ap
 kubectl create configmap apim-gw-manager-worker-axis2 --from-file=../confs/apim-gw-manager-worker/repository/conf/axis2/
 kubectl create configmap apim-gw-manager-worker-datasources --from-file=../confs/apim-gw-manager-worker/repository/conf/datasources/
 kubectl create configmap apim-gw-manager-worker-tomcat --from-file=../confs/apim-gw-manager-worker/repository/conf/tomcat/
+kubectl create configmap apim-gw-manager-worker-etc --from-file=../confs/apim-gw-manager-worker/repository/conf/etc/
 
 kubectl create configmap apim-km-bin --from-file=../confs/apim-km/bin/
 kubectl create configmap apim-km-conf --from-file=../confs/apim-km/repository/conf/
