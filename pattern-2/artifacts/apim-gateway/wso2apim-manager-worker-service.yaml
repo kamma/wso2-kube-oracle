@@ -38,14 +38,7 @@ spec:
       name: "https-ps"
       protocol: TCP
       port: 8243
-    -
-      name: "tcp-jndi"
-      protocol: TCP
-      port: 11111
-    -
-      name: "tcp-rmi"
-      protocol: TCP
-      port: 9999
+
   # label keys and values that must match in order to receive traffic for this service
   selector:
     node: manager-worker
