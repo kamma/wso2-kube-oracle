@@ -58,7 +58,7 @@
 
     "reverseProxy" : {
         "enabled" : true,    // values true , false , "auto" - will look for  X-Forwarded-* headers
-        "host" : "kube-minion1.dev1.equabank.loc", // If reverse proxy do not have a domain name use IP
+        "host" : "prdel.vody.loc", // If reverse proxy do not have a domain name use IP
         "hosts_port" : "32000",
         "context":"/store",
         "regContext":"" // Use only if different path is used for registry
