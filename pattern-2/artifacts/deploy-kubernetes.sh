@@ -70,6 +70,7 @@ kubectl create configmap apim-pubstore-tm-1-identity --from-file=../confs/apim-p
 kubectl create configmap apim-pubstore-tm-1-axis2 --from-file=../confs/apim-pubstore-tm-1/repository/conf/axis2/
 kubectl create configmap apim-pubstore-tm-1-datasources --from-file=../confs/apim-pubstore-tm-1/repository/conf/datasources/
 kubectl create configmap apim-pubstore-tm-1-tomcat --from-file=../confs/apim-pubstore-tm-1/repository/conf/tomcat/
+kubectl create configmap apim-pubstore-tm-1-jaggery-store --from-file=../confs/apim-pubstore-tm-1/repository/conf/jaggery-store/
 
 kubectl create configmap apim-pubstore-tm-2-bin --from-file=../confs/apim-pubstore-tm-2/bin/
 kubectl create configmap apim-pubstore-tm-2-conf --from-file=../confs/apim-pubstore-tm-2/repository/conf/
@@ -77,6 +78,7 @@ kubectl create configmap apim-pubstore-tm-2-identity --from-file=../confs/apim-p
 kubectl create configmap apim-pubstore-tm-2-axis2 --from-file=../confs/apim-pubstore-tm-2/repository/conf/axis2/
 kubectl create configmap apim-pubstore-tm-2-datasources --from-file=../confs/apim-pubstore-tm-2/repository/conf/datasources/
 kubectl create configmap apim-pubstore-tm-2-tomcat --from-file=../confs/apim-pubstore-tm-2/repository/conf/tomcat/
+kubectl create configmap apim-pubstore-tm-2-jaggery-store --from-file=../confs/apim-pubstore-tm-2/repository/conf/jaggery-store/
 
 echo 'deploying services and volume claims ...'
 kubectl create -f apim-analytics-single/wso2apim-analytics-service.yaml

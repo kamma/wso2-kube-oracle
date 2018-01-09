@@ -77,6 +77,8 @@ spec:
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-datasources/"
         - name: apim-pubstore-tm-2-tomcat
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-tomcat/"
+        - name: apim-pubstore-tm-2-jaggery-store
+          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-jaggery-store/"
         livenessProbe:
           tcpSocket:
             port: 9443
@@ -105,3 +107,6 @@ spec:
       - name: apim-pubstore-tm-2-tomcat
         configMap:
           name: apim-pubstore-tm-2-tomcat
+      - name: apim-pubstore-tm-2-jaggery-store
+        configMap:
+          name: apim-pubstore-tm-2-jaggery-store
