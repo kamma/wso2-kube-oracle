@@ -65,8 +65,6 @@ spec:
         volumeMounts:
         - name: apim-logs-storage-volume
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/logs"
-        - name: apim-tm2-storage-volume
-          mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
         - name: apim-pubstore-tm-2-bin
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
         - name: apim-pubstore-tm-2-conf
@@ -79,6 +77,8 @@ spec:
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-datasources/"
         - name: apim-pubstore-tm-2-tomcat
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-tomcat/"
+        - name: apim-pubstore-tm-2-jaggery-store
+          mountPath: "/home/wso2user/wso2am-2.1.0-conf/conf-jaggery-store/"
         livenessProbe:
           tcpSocket:
             port: 9443
@@ -89,9 +89,6 @@ spec:
       - name: apim-logs-storage-volume
         persistentVolumeClaim:
           claimName: apim-logs-volume-claim
-      - name: apim-tm2-storage-volume
-        persistentVolumeClaim:
-          claimName: apim-tm1-volume-claim
       - name: apim-pubstore-tm-2-bin
         configMap:
           name: apim-pubstore-tm-2-bin
@@ -110,3 +107,6 @@ spec:
       - name: apim-pubstore-tm-2-tomcat
         configMap:
           name: apim-pubstore-tm-2-tomcat
+      - name: apim-pubstore-tm-2-jaggery-store
+        configMap:
+          name: apim-pubstore-tm-2-jaggery-store

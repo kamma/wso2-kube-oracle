@@ -81,12 +81,14 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && cp ${USER_HOME}/out_seq/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/customsequences/out/ \
         && cp ${USER_HOME}/webapps/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/jaggeryapps/publisher \
+        && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/jaggeryapps/store \
         && unzip ${USER_HOME}/jaggeryapps/publisher.zip -d ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/jaggeryapps/ \
+        && unzip ${USER_HOME}/jaggeryapps/store.zip -d ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/jaggeryapps/ \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/am#sample#calculator#v1 \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/am#sample#pizzashack#v1 \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/am#sample#calculator#v1.war \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps/am#sample#pizzashack#v1.war \
-        && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server ${USER_HOME}/tmp/ \
+        && cp -r ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/synapse-configs ${USER_HOME}/tmp/ \
         && rm ${USER_HOME}/${WSO2_SERVER_PACK} \
         && rm ${USER_HOME}/${JDK_ARCHIVE} \
         && rm ${USER_HOME}/${CLIENT_TRUSTSTORE} \
@@ -95,6 +97,7 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm -rf ${USER_HOME}/in_seq \
         && rm -rf ${USER_HOME}/out_seq \
         && rm -rf ${USER_HOME}/webapps \
+        && rm -rf ${USER_HOME}/jaggeryapps \
 	&& mkdir -p ${USER_HOME}/scripts/ \
 	&& cat ${USER_HOME}/${STARTUP_SCRIPT} > ${USER_HOME}/scripts/${STARTUP_SCRIPT} \
 	&& rm ${USER_HOME}/${STARTUP_SCRIPT} \

@@ -43,6 +43,7 @@ spec:
       protocol: TCP
       port: 9443
       nodePort: 32039
+
   # label keys and values that must match in order to receive traffic for this service
   selector:
     app: wso2apim-gw

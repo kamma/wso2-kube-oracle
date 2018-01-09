@@ -54,7 +54,7 @@ spec:
         - name: apim-mgt-logs-volume
           mountPath: "/home/wso2user/wso2am-2.1.0/repository/logs"
         - name: apim-mgt-storage-volume
-          mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server"
+          mountPath: "/home/wso2user/wso2am-2.1.0/repository/deployment/server/synapse-configs"
         - name: apim-gw-manager-worker-bin
           mountPath: "/home/wso2user/wso2am-2.1.0-conf/bin/"
         - name: apim-gw-manager-worker-conf
