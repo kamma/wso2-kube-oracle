@@ -315,13 +315,6 @@ do
     -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
     -Dorg.wso2.ignoreHostnameVerification=true \
     -DworkerNode=false \
-    -Dcom.sun.management.jmxremote \
-    -Dcom.sun.management.jmxremote.authenticate=true \
-    -Dcom.sun.management.jmxremote.ssl=false \
-    -Dcom.sun.management.jmxremote.local.only=false \
-    -Dcom.sun.management.jmxremote.port=1099 \
-    -Dcom.sun.management.jmxremote.rmi.port=1099 \
-    -Djava.rmi.server.hostname=localhost \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done
