@@ -78,8 +78,8 @@ if [ -e ${carbon_home}-conf/conf-tomcat ]
  then cp ${carbon_home}-conf/conf-tomcat/* ${carbon_home}/repository/conf/tomcat/
 fi
 
-if [ -e ${carbon_home}-conf/conf-jaggery-store ]
- then cp ${carbon_home}-conf/conf-jaggery-store/* ${carbon_home}/repository/deployment/server/jaggeryapps/store/site/conf/
+if [ -e ${carbon_home}-conf/jaggery-store ]
+ then cp ${carbon_home}-conf/jaggery-store/* ${carbon_home}/repository/deployment/server/jaggeryapps/store/site/conf/
 fi
 
 if [ -e ${carbon_home}-conf/conf-data-bridge ]
