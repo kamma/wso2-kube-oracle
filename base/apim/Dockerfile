@@ -33,12 +33,15 @@ ARG JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
 ARG JAVA_HOME=${USER_HOME}/java
 ARG STARTUP_SCRIPT=init_carbon.sh
 ARG LIBS=${FILES}/libs/*
+ARG PATCHES=${FILES}/patches/*
 ARG IN_SEQ=${FILES}/in_seq/*
 ARG OUT_SEQ=${FILES}/out_seq/*
+ARG FAULT_SEQ=${FILES}/fault_seq/*
 ARG WEBAPPS=${FILES}/webapps/*
 ARG JAGGERYAPPS=${FILES}/jaggeryapps/*
 ARG CLIENT_TRUSTSTORE=client-truststore.jks
 ARG WSO2CARBON_JKS=wso2carbon.jks
+ARG TARGET_PATCH_DIR=patch001
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends --no-install-suggests \
@@ -53,8 +56,10 @@ RUN useradd --system --uid ${USER_ID} --gid 0 --create-home --home-dir ${USER_HO
 	--no-log-init ${USER}
 
 RUN mkdir ${USER_HOME}/libs
+RUN mkdir ${USER_HOME}/patches
 RUN mkdir ${USER_HOME}/in_seq
 RUN mkdir ${USER_HOME}/out_seq
+RUN mkdir ${USER_HOME}/fault_seq
 RUN mkdir ${USER_HOME}/webapps
 RUN mkdir ${USER_HOME}/jaggeryapps
 
@@ -62,8 +67,10 @@ RUN mkdir ${USER_HOME}/jaggeryapps
 COPY ${FILES}/${WSO2_SERVER_PACK} ${STARTUP_SCRIPT} ${FILES}/${JDK_ARCHIVE} ${FILES}/${CLIENT_TRUSTSTORE} \
     ${FILES}/${WSO2CARBON_JKS} sudoers change_ownership.sh ${USER_HOME}/
 COPY ${LIBS} ${USER_HOME}/libs/
+COPY ${PATCHES} ${USER_HOME}/patches/
 COPY ${IN_SEQ} ${USER_HOME}/in_seq/
 COPY ${OUT_SEQ} ${USER_HOME}/out_seq/
+COPY ${FAULT_SEQ} ${USER_HOME}/fault_seq/
 COPY ${WEBAPPS} ${USER_HOME}/webapps/
 COPY ${JAGGERYAPPS} ${USER_HOME}/jaggeryapps/
 
@@ -77,8 +84,11 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && cp ${USER_HOME}/${WSO2CARBON_JKS} \
             ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/ \
         && cp ${USER_HOME}/libs/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/lib/ \
+	&& mkdir -p ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/patches/${TARGET_PATCH_DIR} \
+        && cp -r ${USER_HOME}/patches/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/components/patches/${TARGET_PATCH_DIR} \
         && cp ${USER_HOME}/in_seq/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/customsequences/in/ \
         && cp ${USER_HOME}/out_seq/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/customsequences/out/ \
+        && cp ${USER_HOME}/fault_seq/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/customsequences/fault/ \
         && cp ${USER_HOME}/webapps/* ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/webapps \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/jaggeryapps/publisher \
         && rm -rf ${USER_HOME}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/deployment/server/jaggeryapps/store \
@@ -94,8 +104,10 @@ RUN unzip -q ${USER_HOME}/${WSO2_SERVER_PACK} -d ${USER_HOME}/ \
         && rm ${USER_HOME}/${CLIENT_TRUSTSTORE} \
         && rm ${USER_HOME}/${WSO2CARBON_JKS} \
         && rm -rf ${USER_HOME}/libs \
+        && rm -rf ${USER_HOME}/patches \
         && rm -rf ${USER_HOME}/in_seq \
         && rm -rf ${USER_HOME}/out_seq \
+        && rm -rf ${USER_HOME}/fault_seq \
         && rm -rf ${USER_HOME}/webapps \
         && rm -rf ${USER_HOME}/jaggeryapps \
 	&& mkdir -p ${USER_HOME}/scripts/ \

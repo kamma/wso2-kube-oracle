@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="psd2-fault-v3">
+
+  <log level="custom">
+    <property name="OPERATION_ID" expression="get-property('operationId')" />
+    <property name="ERROR_CODE" expression="get-property('ERROR_CODE')"/>
+    <property name="detail" expression="get-property('ERROR_DETAIL')"/>       
+    <property name="ERROR_MESSAGE" expression="get-property('ERROR_MESSAGE')"/>
+    <property name="exception" expression="get-property('ERROR_EXCEPTION')"/>
+  </log>
+
+  <header name="X-Client-Cert" scope="transport" action="remove"/>
+  <header name="X-Operation-ID" scope="transport" action="remove"/>
+  <header name="X-JWT-Assertion" scope="transport" action="remove"/>
+  <header name="Access-Control-Allow-Methods" scope="transport" action="remove"/>
+  <header name="X-NginX-Proxy" scope="transport" action="remove"/>
+  <header name="Access-Control-Allow-Headers" scope="transport" action="remove"/>
+  <header name="X-Real_IP" scope="transport" action="remove"/>
+  <header name="Access-Control-Allow-Origin" scope="transport" action="remove"/>
+  <header name="Accept-Encoding" scope="transport" action="remove"/>
+  <header name="X-Forwarded-For" scope="transport" action="remove"/>          
+  
+  <respond/> 
+</sequence>
