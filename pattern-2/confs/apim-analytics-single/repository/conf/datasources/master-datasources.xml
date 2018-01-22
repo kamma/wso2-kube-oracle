@@ -14,7 +14,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:h2:./repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
+                    <url>jdbc:h2:./repository/database/ama/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=60000</url>
                     <username>wso2carbon</username>
                     <password>wso2carbon</password>
                     <driverClassName>org.h2.Driver</driverClassName>
@@ -36,7 +36,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@10.76.215.1:49161/xe</url>
+                    <url>jdbc:oracle:thin:@192.168.201.130:49161/xe</url>
                     <username>wso2um</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
@@ -57,7 +57,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <url>jdbc:oracle:thin:@10.76.215.1:49161/xe</url>
+                    <url>jdbc:oracle:thin:@192.168.201.130:49161/xe</url>
                     <username>wso2reg</username>
                     <password>Passw0rd</password>
                     <driverClassName>oracle.jdbc.OracleDriver</driverClassName>
