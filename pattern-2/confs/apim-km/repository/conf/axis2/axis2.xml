@@ -625,7 +625,6 @@
         -->
         <parameter name="membershipScheme">kubernetes</parameter>
         <parameter name="membershipSchemeClassName">org.wso2.carbon.membership.scheme.kubernetes.KubernetesMembershipScheme</parameter>
-		<parameter name="KUBERNETES_API_SERVER">http://192.168.201.130:8080</parameter>
         <parameter name="KUBERNETES_SERVICES">wso2apim-km-node</parameter>
         <parameter name="KUBERNETES_NAMESPACE">wso2</parameter>
         <parameter name="KUBERNETES_MASTER_SKIP_SSL_VERIFICATION">true</parameter>
