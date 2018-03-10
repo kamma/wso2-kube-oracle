@@ -628,6 +628,7 @@
         <parameter name="KUBERNETES_SERVICES">wso2apim-km-node</parameter>
         <parameter name="KUBERNETES_NAMESPACE">wso2</parameter>
         <parameter name="KUBERNETES_MASTER_SKIP_SSL_VERIFICATION">true</parameter>
+        <parameter name="KUBERNETES_API_SERVER_TOKEN">eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ3c28yIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6IndzbzJ1c2VyLXRva2VuLTJscXhxIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6IndzbzJ1c2VyIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNmI4OTkyZmYtMjQ3Mi0xMWU4LWE4MGMtMDAwYzI5MzkzZjU4Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OndzbzI6d3NvMnVzZXIifQ.q--msT2PqU3wXs_21nixRetU_lllhv6FEbYiocWQnjwjilIqBC1Cv2i1ep-1ytFs5Z-i7EDasPMVfUOClPERPfEWgG558gmaUozmvBAJAnVR7dbSjsct2rMo6WWj-Uhf-4MiMqjZJ3O8rLT-HUrmPH_ahIjlCDpjZLVGcyOkhMuOS0CwAFAzj4fEfjYu3QJkZdXh9dtr3_idQC7er1JpxDIWjApoGKwkmxI6JIm6XBDNJwBPzpLJ7YKJizX3o0DO3rth2w6WqbUJgF6JyvbrUxfwX5cWsDXjjtuQORTOpf3JEgr0zIRdkrYtolEHTWDNm2XMoJXFLwvUFLw9bkuKkw</parameter>
         <!--<parameter name="licenseKey">xxx</parameter>-->
         <!--<parameter name="mgtCenterURL">http://localhost:8081/mancenter/</parameter>-->
 
