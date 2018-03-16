@@ -2,7 +2,7 @@
 
 EQUA_DS=excdb01-vip-devl.equabank.loc:1523/D1GFO.equabank.loc
 EQUA_PWD=oracle1
-LOCAL_DS=192.168.201.130:49161/xe
+LOCAL_DS=192.168.201.135:49161/xe
 LOCAL_PWD=Passw0rd
 
 case $1 in
