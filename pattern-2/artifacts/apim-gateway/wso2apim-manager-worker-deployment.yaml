@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
       -
-        image: 192.168.201.135:5000/wso2am-kubernetes:2.1.0
+        image: 192.168.247.129:5000/wso2am-kubernetes:2.1.0
         name: wso2apim
         imagePullPolicy: Always
         ports:
