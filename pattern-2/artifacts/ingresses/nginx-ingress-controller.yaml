@@ -22,7 +22,7 @@ metadata:
   labels:
     k8s-app: nginx-ingress-controller
     pattern: wso2apim-pattern-2
-  namespace: wso2
+  namespace: nginx-ingress
 spec:
   replicas: 1
   template:
@@ -68,4 +68,4 @@ spec:
         args:
         - /nginx-ingress-controller
         - --default-backend-service=$(POD_NAMESPACE)/nginx-default-http-backend
-       serviceAccountName: "wso2svcacct"
+#       serviceAccountName: "wso2svcacct"
