@@ -22,7 +22,7 @@ metadata:
   labels:
     k8s-app: nginx-ingress-controller
     pattern: wso2apim-pattern-2
-  namespace: kube-system
+  namespace: wso2
 spec:
   replicas: 1
   template:
