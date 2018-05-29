@@ -20,7 +20,6 @@ metadata:
     app: wso2apim
     pattern: wso2apim-pattern-2
 spec:
-  type: NodePort
   ports:
     # ports that this service should serve on
     -
