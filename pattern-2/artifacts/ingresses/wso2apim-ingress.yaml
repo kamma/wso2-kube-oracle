@@ -26,6 +26,7 @@ spec:
   - hosts:
     - wso2apim
     - wso2apim-gw
+    secretName: wso2apim-secret
   rules:
   - host: wso2apim
     http:
