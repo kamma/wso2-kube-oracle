@@ -36,7 +36,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: wso2apim-ama
+          serviceName: wso2apim-analytics
           servicePort: 9444
   - host: wso2apim-km
     http:
