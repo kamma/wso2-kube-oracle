@@ -178,14 +178,14 @@
 
 		<AuthenticatorConfig name="PowerauthAuthenticator" enabled="true">
 			<Parameter name="AuthTokenEndpoint"
-				>http://192.168.247.129:8088/token</Parameter>
+				>http://192.168.247.131:8088/token</Parameter>
 			<Parameter name="AuthnEndpoint"
-				>http://192.168.247.129:8088/authorize</Parameter>
+				>http://192.168.247.131:8088/authorize</Parameter>
 			<Parameter name="UserInfoEndpoint"
-				>http://192.168.247.129:8088/profile</Parameter>
+				>http://192.168.247.131:8088/profile</Parameter>
 			<Parameter name="ClientId">democlient</Parameter>
 			<Parameter name="ClientSecret">changeme</Parameter>
-			<Parameter name="CallBackUrl">https://192.168.247.12997:32029:32029/commonauth</Parameter>
+			<Parameter name="CallBackUrl">https://192.168.247.13197:32029:32029/commonauth</Parameter>
 			<Parameter name="Scope">profile</Parameter>
 		</AuthenticatorConfig>
 
