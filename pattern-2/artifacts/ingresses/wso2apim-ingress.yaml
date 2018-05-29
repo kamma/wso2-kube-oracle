@@ -29,28 +29,16 @@ spec:
     secretName: wso2apim-secret
   rules:
   - host: wso2apim
-    https:
+    http:
       paths:
       - path: /
         backend:
           serviceName: wso2apim
           servicePort: 9443
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wso2apim
-          servicePort: 9763
   - host: wso2apim-gw
-    https:
+    http:
       paths:
       - path: /
         backend:
           serviceName: wso2apim-gw
           servicePort: 8243
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: wso2apim-gw
-          servicePort: 8280
