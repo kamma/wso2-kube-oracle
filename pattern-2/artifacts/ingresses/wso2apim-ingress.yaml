@@ -5,9 +5,14 @@ metadata:
   labels:
     pattern: wso2apim-pattern-2
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     kubernetes.io/ingress.allow-http: "false"
-    ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+#    nginx.ingress.kubernetes.io/affinity: cookie
+#    nginx.ingress.kubernetes.io/session-cookie-hash: sha1
+#    nginx.ingress.kubernetes.io/session-cookie-name: SERVERID
     nginx.org/ssl-services: "wso2apim,wso2apim-gw,wso2apim-analytics,wso2apim-km"
+    nginx.org/lb-method: "ip_hash"
 spec:
   tls:
   - hosts:
